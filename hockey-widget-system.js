@@ -106,7 +106,7 @@ class HockeyCardWidget {
                     </div>
 
                     <div class="action-buttons">
-                        <button class="btn btn-secondary" onclick="window.HockeyWidgets['${this.containerId}'].loadSupabaseData()">Refresh</button>
+                        <button class="btn btn-secondary" onclick="window.HockeyWidgets['${this.containerId}'].loadSupabaseData()">Reset</button>
                     </div>
                 </div>
 
