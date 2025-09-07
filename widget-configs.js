@@ -295,7 +295,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'ext-2021-22': {
         tableName: 'EXT 2021-2022',
-        title: 'EXT 2021-2022',
+        title: 'Extended Series 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -304,7 +304,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'ext-2022-23': {
         tableName: 'EXT 2022-2023',
-        title: 'EXT 2022-2023',
+        title: 'Extended Series 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -313,7 +313,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'ext-2023-24': {
         tableName: 'EXT 2023-2024',
-        title: 'EXT 2023-2024',
+        title: 'Extended Series 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -322,7 +322,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'ext-2024-25': {
         tableName: 'EXT 2024-2025',
-        title: 'EXT 2024-2025',
+        title: 'Extended Series 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -371,7 +371,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     // BD
     'bd-2020-21': {
         tableName: 'BD 2020-2021',
-        title: 'BD 2020-2021',
+        title: 'Black Diamond 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -380,7 +380,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'bd-2021-22': {
         tableName: 'BD 2021-2022',
-        title: 'BD 2021-2022',
+        title: 'Black Diamond 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -389,7 +389,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'bd-2022-23': {
         tableName: 'BD 2022-2023',
-        title: 'BD 2022-2023',
+        title: 'Black Diamond 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -398,7 +398,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'bd-2024-25': {
         tableName: 'BD 2024-2025',
-        title: 'BD 2024-2025',
+        title: 'Black Diamond 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -409,7 +409,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     // Platinum
     'platinum-2020-21': {
         tableName: 'Platinum 2020-2021',
-        title: 'Platinum 2020-2021',
+        title: 'O-Pee-Chee Platinum 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -418,7 +418,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'platinum-2021-22': {
         tableName: 'Platinum 2021-2022',
-        title: 'Platinum 2021-2022',
+        title: 'O-Pee-Chee Platinum 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -427,7 +427,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'platinum-2022-23': {
         tableName: 'Platinum 2022-2023',
-        title: 'Platinum 2022-2023',
+        title: 'O-Pee-Chee Platinum 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -435,7 +435,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         defaultGroupBy: 'team'
     },
     'platinum-2023-24': {
-        tableName: 'Platinum 2023-2024',
+        tableName: 'O-Pee-Chee Platinum 2023-2024',
         title: 'Platinum 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
@@ -445,7 +445,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'platinum-2024-25': {
         tableName: 'Platinum 2024-2025',
-        title: 'Platinum 2024-2025',
+        title: 'O-Pee-Chee Platinum 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -588,7 +588,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     // Metal
     'metal-2020-21': {
         tableName: 'Metal 2020-2021',
-        title: 'Metal 2020-2021',
+        title: 'Metal Universe 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -597,7 +597,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'metal-2021-22': {
         tableName: 'Metal 2021-2022',
-        title: 'Metal 2021-2022',
+        title: 'Metal Universe 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -606,7 +606,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'metal-2022-23': {
         tableName: 'Metal 2022-2023',
-        title: 'Metal 2022-2023',
+        title: 'Metal Universe 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -615,7 +615,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'metal-2023-24': {
         tableName: 'Metal 2023-2024',
-        title: 'Metal 2023-2024',
+        title: 'Metal Universe 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -624,7 +624,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'metal-2024-25': {
         tableName: 'Metal 2024-2025',
-        title: 'Metal 2024-2025',
+        title: 'Metal Universe 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -731,7 +731,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     // SPA
     'spa-2020-21': {
         tableName: 'SPA 2020-2021',
-        title: 'SPA 2020-2021',
+        title: 'SP Authentic 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -740,7 +740,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'spa-2021-22': {
         tableName: 'SPA 2021-2022',
-        title: 'SPA 2021-2022',
+        title: 'SP Authentic 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -749,7 +749,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'spa-2022-23': {
         tableName: 'SPA 2022-2023',
-        title: 'SPA 2022-2023',
+        title: 'SP Authentic 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -758,7 +758,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'spa-2023-24': {
         tableName: 'SPA 2023-2024',
-        title: 'SPA 2023-2024',
+        title: 'SP Authentic 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
@@ -767,7 +767,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     },
     'spa-2024-25': {
         tableName: 'SPA 2024-2025',
-        title: 'SPA 2024-2025',
+        title: 'SP Authentic 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
