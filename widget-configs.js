@@ -286,7 +286,7 @@ const HOCKEY_WIDGET_CONFIGS = {
     // EXT
     'ext-2020-21': {
         tableName: 'EXT 2020-2021',
-        title: 'EXT 2020-2021',
+        title: 'Extended Series 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
         imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
