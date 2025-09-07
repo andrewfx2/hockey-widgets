@@ -389,7 +389,7 @@ class HockeyCardWidget {
         }
         
         if (card["Serial #'d"] && card["Serial #'d"].toString().trim() !== '' && card["Serial #'d"].toString().trim() !== '0') {
-            badges.push(`<span class="badge badge-serial">${card["Serial #'d"]}</span>`);
+            badges.push(`<span class="badge badge-serial">/${card["Serial #'d"]}</span>`);
         }
         
         if (card['Point'] && card['Point'].toString().trim() !== '' && card['Point'].toString().trim() !== '0') {
