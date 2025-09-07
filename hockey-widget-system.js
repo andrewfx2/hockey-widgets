@@ -255,9 +255,9 @@ class HockeyCardWidget {
         }
     }
 
-    // OPTIMIZED Apply filters function
+    // OPTIMIZED Apply filters function with enhanced search
     applyFilters() {
-        console.log('Applying filters...');
+        console.log('=== APPLYING FILTERS ===');
         
         const searchInput = document.getElementById(`searchInput-${this.containerId}`);
         const teamFilter = document.getElementById(`teamFilter-${this.containerId}`);
@@ -265,18 +265,20 @@ class HockeyCardWidget {
         const typeFilter = document.getElementById(`typeFilter-${this.containerId}`);
         
         if (!searchInput || !teamFilter || !setFilter || !typeFilter) {
-            console.error('Filter elements not found');
+            console.error('Filter elements not found during applyFilters');
             return;
         }
 
-        const searchTerm = searchInput.value.toLowerCase();
+        const searchTerm = searchInput.value.toLowerCase().trim();
         const teamFilterValue = teamFilter.value;
         const setFilterValue = setFilter.value;
         const typeFilterValue = typeFilter.value;
         
         console.log('Filter values:', { searchTerm, teamFilterValue, setFilterValue, typeFilterValue });
+        console.log('Total data to filter:', this.allData.length);
 
         this.filteredData = this.allData.filter(card => {
+            // Search filter
             if (searchTerm) {
                 const searchableText = [
                     card['Set Name'] || '',
@@ -298,14 +300,17 @@ class HockeyCardWidget {
                 }
             }
             
+            // Team filter
             if (teamFilterValue && card['Team Name'] !== teamFilterValue) {
                 return false;
             }
             
+            // Set filter
             if (setFilterValue && card['Set Name'] !== setFilterValue) {
                 return false;
             }
             
+            // Type filter
             if (typeFilterValue) {
                 switch (typeFilterValue) {
                     case 'rookie':
@@ -331,10 +336,13 @@ class HockeyCardWidget {
         });
 
         console.log('Filtered data length:', this.filteredData.length);
+        
         this.currentPage = 1;
         this.groupData();
         this.displayPage();
         this.updateStats();
+        
+        console.log('=== FILTERS APPLIED ===');
     }
 
     // Group data by selected criteria and sort within groups
