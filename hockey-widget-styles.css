@@ -365,7 +365,7 @@
 }
 
 .hockey-widget .card-list-subtitle {
-    font-size: 12px;
+    font-size: 14px;
     color: #cccccc;
 }
 
@@ -422,7 +422,7 @@
 .hockey-widget .card-list-details {
     display: none;
     padding: 10px 20px 10px 40px;
-    background: rgba(0, 50, 0, 0.1);
+    background: rgba(0, 50, 0, 0.2);
     border-bottom: 1px solid rgba(0, 255, 0, 0.1);
 }
 
