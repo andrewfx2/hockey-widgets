@@ -1,4 +1,4 @@
-// hockey-widget-system.js - Complete widget engine
+// hockey-widget-system.js - Complete widget engine with search fix
 class HockeyCardWidget {
     constructor(containerId, config) {
         console.log('Initializing hockey widget with container:', containerId);
@@ -41,7 +41,7 @@ class HockeyCardWidget {
         console.log('Starting widget initialization...');
         this.renderHTML();
         
-        // Wait for DOM to be updated before setting up event listeners
+        // Wait for DOM to be updated - using working timing
         await new Promise(resolve => setTimeout(resolve, 100));
         
         console.log('Setting up event listeners...');
@@ -137,18 +137,19 @@ class HockeyCardWidget {
         console.log('HTML rendered for container:', this.containerId);
     }
     
-    // OPTIMIZED DEBOUNCE FUNCTION
+    // FIXED DEBOUNCE FUNCTION - solves the isMobile context issue
     debounce(func, wait) {
         let timeout;
+        const widget = this; // Capture widget context
+        const isMobile = this.isMobile; // Capture isMobile value
+        
         return function executedFunction(...args) {
             const later = () => {
                 clearTimeout(timeout);
-                // Use requestAnimationFrame for smoother updates
-                requestAnimationFrame(() => func.apply(this, args));
+                requestAnimationFrame(() => func.apply(widget, args));
             };
             clearTimeout(timeout);
-            // Faster response on mobile
-            timeout = setTimeout(later, this.isMobile ? 150 : wait);
+            timeout = setTimeout(later, isMobile ? 150 : wait);
         };
     }
 
@@ -255,7 +256,7 @@ class HockeyCardWidget {
         }
     }
 
-    // OPTIMIZED Apply filters function with enhanced search
+    // Apply filters function - working Squarespace pattern
     applyFilters() {
         console.log('=== APPLYING FILTERS ===');
         
@@ -701,77 +702,69 @@ class HockeyCardWidget {
         }
     }
 
-    // Setup event listeners with better error handling
+    // Setup event listeners using working Squarespace pattern
     setupEventListeners() {
         console.log('Setting up event listeners for container:', this.containerId);
         
-        const searchInput = document.getElementById(`searchInput-${this.containerId}`);
-        const teamFilter = document.getElementById(`teamFilter-${this.containerId}`);
-        const setFilter = document.getElementById(`setFilter-${this.containerId}`);
-        const typeFilter = document.getElementById(`typeFilter-${this.containerId}`);
-        
-        // Debug logging
-        console.log('Element check:', {
-            searchInput: !!searchInput,
-            teamFilter: !!teamFilter,
-            setFilter: !!setFilter,
-            typeFilter: !!typeFilter
-        });
-        
-        if (!searchInput) {
-            console.error('Search input not found!', `searchInput-${this.containerId}`);
-            return;
-        }
-        
-        if (!teamFilter || !setFilter || !typeFilter) {
-            console.error('Filter elements not found!');
-            return;
-        }
-        
-        // Debounced search
+        // Create debounced search function once (like working code)
         const debouncedSearch = this.debounce(() => {
-            console.log('Debounced search triggered');
+            console.log('Debounced search executing...');
             this.applyFilters();
-        }, 300);
+        }, 200);
         
-        searchInput.addEventListener('input', (e) => {
-            console.log('Search input event triggered:', e.target.value);
-            e.target.style.borderColor = '#00aa00';
-            debouncedSearch();
-            setTimeout(() => {
-                e.target.style.borderColor = '#008800';
-            }, 200);
-        });
-        
-        // Test that search input is working
-        searchInput.addEventListener('keyup', (e) => {
-            console.log('Keyup event:', e.target.value);
-        });
-        
-        [teamFilter, setFilter, typeFilter].forEach(filter => {
-            filter.addEventListener('change', (e) => {
-                console.log('Filter change event:', e.target.id, e.target.value);
-                e.target.style.borderColor = '#00cc00';
-                this.applyFilters();
-                
+        // Use retry mechanism to ensure elements exist
+        const waitForElements = () => {
+            const searchInput = document.getElementById(`searchInput-${this.containerId}`);
+            const teamFilter = document.getElementById(`teamFilter-${this.containerId}`);
+            const setFilter = document.getElementById(`setFilter-${this.containerId}`);
+            const typeFilter = document.getElementById(`typeFilter-${this.containerId}`);
+            
+            if (!searchInput || !teamFilter || !setFilter || !typeFilter) {
+                console.log('Elements not ready, retrying in 100ms...');
+                setTimeout(waitForElements, 100);
+                return;
+            }
+            
+            console.log('All elements found, attaching listeners...');
+            
+            // Search input - exact pattern from working code
+            searchInput.addEventListener('input', (e) => {
+                console.log('Search input event:', e.target.value);
+                e.target.style.borderColor = '#00aa00';
+                debouncedSearch();
                 setTimeout(() => {
                     e.target.style.borderColor = '#008800';
-                }, 300);
+                }, 200);
             });
             
-            filter.addEventListener('focus', (e) => {
-                e.target.style.borderColor = '#00ff00';
+            // Filter dropdowns - exact pattern from working code  
+            [teamFilter, setFilter, typeFilter].forEach(filter => {
+                filter.addEventListener('change', (e) => {
+                    console.log('Filter change event:', e.target.id, e.target.value);
+                    e.target.style.borderColor = '#00cc00';
+                    this.applyFilters();
+                    setTimeout(() => {
+                        e.target.style.borderColor = '#008800';
+                    }, 300);
+                });
+                
+                filter.addEventListener('focus', (e) => {
+                    e.target.style.borderColor = '#00ff00';
+                });
+                
+                filter.addEventListener('blur', (e) => {
+                    e.target.style.borderColor = '#008800';
+                });
             });
             
-            filter.addEventListener('blur', (e) => {
-                e.target.style.borderColor = '#008800';
-            });
-        });
+            console.log('Event listeners setup complete - search is working!');
+        };
         
-        console.log('Event listeners setup complete');
+        // Start checking for elements
+        waitForElements();
     }
     
-    // Add test function for debugging
+    // Test function for debugging
     testSearch() {
         console.log('Testing search functionality...');
         const searchInput = document.getElementById(`searchInput-${this.containerId}`);
