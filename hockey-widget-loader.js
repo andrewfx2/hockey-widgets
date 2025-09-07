@@ -2,7 +2,7 @@
     const script = document.currentScript;
     const widgetType = script.getAttribute('data-widget');
     const containerId = script.getAttribute('data-container');
-    const baseUrl = 'https://yourusername.github.io/hockey-widgets';
+    const baseUrl = 'https://andrewfx2.github.io/hockey-widgets';
     
     if (window.HockeyCardWidget) {
         initializeWidget();
