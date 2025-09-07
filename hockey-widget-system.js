@@ -1,6 +1,8 @@
 // hockey-widget-system.js - Complete widget engine
 class HockeyCardWidget {
     constructor(containerId, config) {
+        console.log('Initializing hockey widget with container:', containerId);
+        
         this.containerId = containerId;
         this.config = {
             // Default configuration
@@ -25,12 +27,27 @@ class HockeyCardWidget {
         this.expandedGroups = new Set();
         this.isMobile = window.innerWidth <= 767;
         
+        // Verify container exists
+        const container = document.getElementById(this.containerId);
+        if (!container) {
+            console.error(`Container with ID '${this.containerId}' not found`);
+            return;
+        }
+        
         this.init();
     }
     
     async init() {
+        console.log('Starting widget initialization...');
         this.renderHTML();
+        
+        // Wait for DOM to be updated before setting up event listeners
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        console.log('Setting up event listeners...');
         this.setupEventListeners();
+        
+        console.log('Loading data...');
         await this.loadSupabaseData();
     }
     
@@ -116,6 +133,8 @@ class HockeyCardWidget {
                 </div>
             </div>
         `;
+        
+        console.log('HTML rendered for container:', this.containerId);
     }
     
     // OPTIMIZED DEBOUNCE FUNCTION
@@ -136,7 +155,9 @@ class HockeyCardWidget {
     // Toggle filters on mobile
     toggleFilters() {
         const filterSection = document.getElementById(`filterSection-${this.containerId}`);
-        filterSection.classList.toggle('open');
+        if (filterSection) {
+            filterSection.classList.toggle('open');
+        }
     }
 
     // Load ALL data from Supabase
@@ -198,8 +219,12 @@ class HockeyCardWidget {
         }).length;
         
         const statsText = `${total} Cards • ${rookies} Rookies • ${autos} Autos • ${mems} Memorabilia • ${serialed} Serial #`;
-        document.getElementById(`cardStats-${this.containerId}`).textContent = statsText;
-        document.getElementById(`statsContainer-${this.containerId}`).style.display = 'block';
+        
+        const statsElement = document.getElementById(`cardStats-${this.containerId}`);
+        if (statsElement) {
+            statsElement.textContent = statsText;
+            document.getElementById(`statsContainer-${this.containerId}`).style.display = 'block';
+        }
     }
 
     // Update filter dropdowns
@@ -210,30 +235,46 @@ class HockeyCardWidget {
         const teamFilter = document.getElementById(`teamFilter-${this.containerId}`);
         const setFilter = document.getElementById(`setFilter-${this.containerId}`);
         
-        teamFilter.innerHTML = '<option value="">All Teams</option>';
-        setFilter.innerHTML = '<option value="">All Sets</option>';
-        
-        teams.forEach(team => {
-            const option = document.createElement('option');
-            option.value = team;
-            option.textContent = team;
-            teamFilter.appendChild(option);
-        });
-        
-        sets.forEach(set => {
-            const option = document.createElement('option');
-            option.value = set;
-            option.textContent = set;
-            setFilter.appendChild(option);
-        });
+        if (teamFilter && setFilter) {
+            teamFilter.innerHTML = '<option value="">All Teams</option>';
+            setFilter.innerHTML = '<option value="">All Sets</option>';
+            
+            teams.forEach(team => {
+                const option = document.createElement('option');
+                option.value = team;
+                option.textContent = team;
+                teamFilter.appendChild(option);
+            });
+            
+            sets.forEach(set => {
+                const option = document.createElement('option');
+                option.value = set;
+                option.textContent = set;
+                setFilter.appendChild(option);
+            });
+        }
     }
 
     // OPTIMIZED Apply filters function
     applyFilters() {
-        const searchTerm = document.getElementById(`searchInput-${this.containerId}`).value.toLowerCase();
-        const teamFilter = document.getElementById(`teamFilter-${this.containerId}`).value;
-        const setFilter = document.getElementById(`setFilter-${this.containerId}`).value;
-        const typeFilter = document.getElementById(`typeFilter-${this.containerId}`).value;
+        console.log('Applying filters...');
+        
+        const searchInput = document.getElementById(`searchInput-${this.containerId}`);
+        const teamFilter = document.getElementById(`teamFilter-${this.containerId}`);
+        const setFilter = document.getElementById(`setFilter-${this.containerId}`);
+        const typeFilter = document.getElementById(`typeFilter-${this.containerId}`);
+        
+        if (!searchInput || !teamFilter || !setFilter || !typeFilter) {
+            console.error('Filter elements not found');
+            return;
+        }
+
+        const searchTerm = searchInput.value.toLowerCase();
+        const teamFilterValue = teamFilter.value;
+        const setFilterValue = setFilter.value;
+        const typeFilterValue = typeFilter.value;
+        
+        console.log('Filter values:', { searchTerm, teamFilterValue, setFilterValue, typeFilterValue });
 
         this.filteredData = this.allData.filter(card => {
             if (searchTerm) {
@@ -257,16 +298,16 @@ class HockeyCardWidget {
                 }
             }
             
-            if (teamFilter && card['Team Name'] !== teamFilter) {
+            if (teamFilterValue && card['Team Name'] !== teamFilterValue) {
                 return false;
             }
             
-            if (setFilter && card['Set Name'] !== setFilter) {
+            if (setFilterValue && card['Set Name'] !== setFilterValue) {
                 return false;
             }
             
-            if (typeFilter) {
-                switch (typeFilter) {
+            if (typeFilterValue) {
+                switch (typeFilterValue) {
                     case 'rookie':
                         const rookie = card['Rookie'];
                         if (!rookie || rookie.toString().trim() === '' || rookie.toString().trim() === '0' || rookie.toString().toLowerCase() === 'no') return false;
@@ -289,6 +330,7 @@ class HockeyCardWidget {
             return true;
         });
 
+        console.log('Filtered data length:', this.filteredData.length);
         this.currentPage = 1;
         this.groupData();
         this.displayPage();
@@ -332,10 +374,13 @@ class HockeyCardWidget {
 
     // Change grouping
     changeGroupBy() {
-        this.currentGroupBy = document.getElementById(`groupBySelect-${this.containerId}`).value;
-        this.expandedGroups.clear();
-        this.groupData();
-        this.displayPage();
+        const groupBySelect = document.getElementById(`groupBySelect-${this.containerId}`);
+        if (groupBySelect) {
+            this.currentGroupBy = groupBySelect.value;
+            this.expandedGroups.clear();
+            this.groupData();
+            this.displayPage();
+        }
     }
 
     // Create accordion group
@@ -466,6 +511,8 @@ class HockeyCardWidget {
     // Toggle accordion group
     toggleAccordionGroup(groupName) {
         const groupElement = document.querySelector(`[data-group-name="${groupName}"]`);
+        if (!groupElement) return;
+        
         const header = groupElement.querySelector('.accordion-header');
         const content = groupElement.querySelector('.accordion-content');
         const cardsContainer = content.querySelector('.accordion-cards');
@@ -549,13 +596,18 @@ class HockeyCardWidget {
     // Display current page with batch DOM operations
     displayPage() {
         const accordionContainer = document.getElementById(`accordionContainer-${this.containerId}`);
+        if (!accordionContainer) return;
+        
         const groupNames = Object.keys(this.groupedData).sort();
         
         accordionContainer.innerHTML = '';
 
         if (groupNames.length === 0) {
             accordionContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #cccccc;">No cards found matching your filters.</div>';
-            document.getElementById(`paginationContainer-${this.containerId}`).style.display = 'none';
+            const paginationContainer = document.getElementById(`paginationContainer-${this.containerId}`);
+            if (paginationContainer) {
+                paginationContainer.style.display = 'none';
+            }
             return;
         }
 
@@ -575,10 +627,16 @@ class HockeyCardWidget {
         const totalItems = this.filteredData.length;
         const totalGroups = Object.keys(this.groupedData).length;
         
-        document.getElementById(`paginationInfo-${this.containerId}`).textContent = 
-            `Showing ${totalGroups} groups (${totalItems} cards total)`;
-
-        document.getElementById(`paginationContainer-${this.containerId}`).style.display = 'none';
+        const paginationInfo = document.getElementById(`paginationInfo-${this.containerId}`);
+        const paginationContainer = document.getElementById(`paginationContainer-${this.containerId}`);
+        
+        if (paginationInfo) {
+            paginationInfo.textContent = `Showing ${totalGroups} groups (${totalItems} cards total)`;
+        }
+        
+        if (paginationContainer) {
+            paginationContainer.style.display = 'none';
+        }
     }
 
     changePage(direction) {
@@ -592,8 +650,10 @@ class HockeyCardWidget {
     // Show error message
     showError(message) {
         const errorDiv = document.getElementById(`error-${this.containerId}`);
-        errorDiv.innerHTML = message;
-        errorDiv.style.display = 'block';
+        if (errorDiv) {
+            errorDiv.innerHTML = message;
+            errorDiv.style.display = 'block';
+        }
     }
 
     // Load data from Supabase
@@ -601,11 +661,12 @@ class HockeyCardWidget {
         const loading = document.getElementById(`loading-${this.containerId}`);
         const error = document.getElementById(`error-${this.containerId}`);
         const accordionContainer = document.getElementById(`accordionContainer-${this.containerId}`);
+        const statsContainer = document.getElementById(`statsContainer-${this.containerId}`);
 
-        loading.style.display = 'block';
-        error.style.display = 'none';
-        accordionContainer.style.display = 'none';
-        document.getElementById(`statsContainer-${this.containerId}`).style.display = 'none';
+        if (loading) loading.style.display = 'block';
+        if (error) error.style.display = 'none';
+        if (accordionContainer) accordionContainer.style.display = 'none';
+        if (statsContainer) statsContainer.style.display = 'none';
 
         try {
             const data = await this.loadAllCards();
@@ -621,28 +682,52 @@ class HockeyCardWidget {
                 this.displayPage();
                 this.updateStats();
                 
-                loading.style.display = 'none';
-                accordionContainer.style.display = 'flex';
+                if (loading) loading.style.display = 'none';
+                if (accordionContainer) accordionContainer.style.display = 'flex';
             });
 
         } catch (err) {
             console.error('Error loading Supabase data:', err);
-            loading.style.display = 'none';
+            if (loading) loading.style.display = 'none';
             this.showError(`<strong>Error loading data:</strong><br>${err.message}`);
         }
     }
 
-    // Setup event listeners
+    // Setup event listeners with better error handling
     setupEventListeners() {
+        console.log('Setting up event listeners for container:', this.containerId);
+        
         const searchInput = document.getElementById(`searchInput-${this.containerId}`);
         const teamFilter = document.getElementById(`teamFilter-${this.containerId}`);
         const setFilter = document.getElementById(`setFilter-${this.containerId}`);
         const typeFilter = document.getElementById(`typeFilter-${this.containerId}`);
         
+        // Debug logging
+        console.log('Element check:', {
+            searchInput: !!searchInput,
+            teamFilter: !!teamFilter,
+            setFilter: !!setFilter,
+            typeFilter: !!typeFilter
+        });
+        
+        if (!searchInput) {
+            console.error('Search input not found!', `searchInput-${this.containerId}`);
+            return;
+        }
+        
+        if (!teamFilter || !setFilter || !typeFilter) {
+            console.error('Filter elements not found!');
+            return;
+        }
+        
         // Debounced search
-        const debouncedSearch = this.debounce(() => this.applyFilters(), 200);
+        const debouncedSearch = this.debounce(() => {
+            console.log('Debounced search triggered');
+            this.applyFilters();
+        }, 300);
         
         searchInput.addEventListener('input', (e) => {
+            console.log('Search input event triggered:', e.target.value);
             e.target.style.borderColor = '#00aa00';
             debouncedSearch();
             setTimeout(() => {
@@ -650,8 +735,14 @@ class HockeyCardWidget {
             }, 200);
         });
         
+        // Test that search input is working
+        searchInput.addEventListener('keyup', (e) => {
+            console.log('Keyup event:', e.target.value);
+        });
+        
         [teamFilter, setFilter, typeFilter].forEach(filter => {
             filter.addEventListener('change', (e) => {
+                console.log('Filter change event:', e.target.id, e.target.value);
                 e.target.style.borderColor = '#00cc00';
                 this.applyFilters();
                 
@@ -668,6 +759,22 @@ class HockeyCardWidget {
                 e.target.style.borderColor = '#008800';
             });
         });
+        
+        console.log('Event listeners setup complete');
+    }
+    
+    // Add test function for debugging
+    testSearch() {
+        console.log('Testing search functionality...');
+        const searchInput = document.getElementById(`searchInput-${this.containerId}`);
+        if (searchInput) {
+            console.log('Search input found, current value:', searchInput.value);
+            // Manually trigger search
+            this.applyFilters();
+            console.log('Filter applied, filtered data length:', this.filteredData.length);
+        } else {
+            console.error('Search input not found!');
+        }
     }
 }
 
@@ -676,6 +783,12 @@ window.HockeyWidgets = window.HockeyWidgets || {};
 
 // Easy initialization function
 window.initHockeyWidget = function(containerId, config) {
-    window.HockeyWidgets[containerId] = new HockeyCardWidget(containerId, config);
-    return window.HockeyWidgets[containerId];
+    console.log('Initializing hockey widget:', containerId);
+    try {
+        window.HockeyWidgets[containerId] = new HockeyCardWidget(containerId, config);
+        return window.HockeyWidgets[containerId];
+    } catch (error) {
+        console.error('Error initializing hockey widget:', error);
+        return null;
+    }
 };
