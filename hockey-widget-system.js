@@ -402,13 +402,13 @@ class HockeyCardWidget {
         let cardSubtitle = '';
         
         if (this.currentGroupBy === 'team') {
-            cardTitle = `${card['Card'] || ''} ${card['Description'] || ''}`.trim();
+            cardTitle = `${card['Description'] || ''}`.trim();
             cardSubtitle = card['Set Name'] || '';
         } else if (this.currentGroupBy === 'player') {
-            cardTitle = `${card['Card'] || ''} ${card['Set Name'] || ''}`.trim();
+            cardTitle = `${card['Set Name'] || ''}`.trim();
             cardSubtitle = `${card['Team City'] || ''} ${card['Team Name'] || ''}`.trim();
         } else {
-            cardTitle = `${card['Card'] || ''} ${card['Description'] || ''}`.trim();
+            cardTitle = `${card['Description'] || ''}`.trim();
             cardSubtitle = `${card['Team City'] || ''} ${card['Team Name'] || ''}`.trim();
         }
         
