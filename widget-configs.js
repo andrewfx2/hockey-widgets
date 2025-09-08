@@ -695,7 +695,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Ice 2021-2022',
         title: 'Ice 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -704,7 +704,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Ice 2022-2023',
         title: 'Ice 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -713,7 +713,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Ice 2023-2024',
         title: 'Ice 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -722,7 +722,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Ice 2024-2025',
         title: 'Ice 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -733,7 +733,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPA 2020-2021',
         title: 'SP Authentic 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -742,7 +742,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPA 2021-2022',
         title: 'SP Authentic 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -751,7 +751,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPA 2022-2023',
         title: 'SP Authentic 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -760,7 +760,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPA 2023-2024',
         title: 'SP Authentic 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -769,7 +769,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPA 2024-2025',
         title: 'SP Authentic 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -780,7 +780,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPX 2020-2021',
         title: 'SPX 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -789,7 +789,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPX 2021-2022',
         title: 'SPX 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -798,7 +798,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPX 2022-2023',
         title: 'SPX 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -807,7 +807,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPX 2023-2024',
         title: 'SPX 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -816,7 +816,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPX 2024-2025',
         title: 'SPX 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -827,7 +827,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Allure 2020-2021',
         title: 'Allure 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -836,7 +836,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Allure 2021-2022',
         title: 'Allure 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -845,7 +845,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Allure 2022-2023',
         title: 'Allure 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -854,7 +854,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Allure 2023-2024',
         title: 'Allure 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -863,7 +863,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Allure 2024-2025',
         title: 'Allure 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -874,7 +874,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'The Cup 2020-2021',
         title: 'The Cup 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -883,7 +883,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'The Cup 2021-2022',
         title: 'The Cup 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -892,7 +892,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'The Cup 2022-2023',
         title: 'The Cup 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -901,7 +901,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'The Cup 2023-2024',
         title: 'The Cup 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/043f6cc1-86fe-488d-ba78-3a1462f50084/55ea7ea7-cf77-437a-a511-669693a4e701.webp?content-type=image%2Fwebp',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
