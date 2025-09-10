@@ -780,7 +780,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPX 2020-2021',
         title: 'SPX 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/d2503d7f-2839-4dac-9e92-60c8cb828500/2020-21-Upper-Deck-SPx-Hockey-Hobby-Box_2880x-removebg-preview.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -789,7 +789,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPX 2021-2022',
         title: 'SPX 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/df7a3181-c351-4616-a024-1a5a5472d2b5/2021-22-upper-deck-spx-hockey-hobby-box-removebg-preview.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -798,7 +798,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPX 2022-2023',
         title: 'SPX 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/f5662697-2878-4064-9856-bd6f5d0e8763/spx_2022-2023-removebg-preview.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -807,7 +807,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPX 2023-2024',
         title: 'SPX 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/a71496ca-d063-48d8-bf84-e819a0e6ab48/spx_2023-2024-removebg-preview.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -816,7 +816,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPX 2024-2025',
         title: 'SPX 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/78a49f8e-6581-4434-8718-54d354fed907/spx_2024-2025-removebg-preview.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
