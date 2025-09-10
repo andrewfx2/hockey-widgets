@@ -94,12 +94,12 @@
 .hockey-widget .search-input {
     width: 100%;
     padding: 12px 16px;
-    border: 2px solid #5dade2;
+    border: 2px solid #5dade2 !important;
     border-radius: 8px;
     font-size: 16px; /* Prevents zoom on iOS */
     transition: border-color 0.15s ease, box-shadow 0.15s ease; /* Optimized transitions */
-    background: rgba(26, 26, 46, 0.8);
-    color: #ffffff;
+    background: rgba(26, 26, 46, 0.8) !important;
+    color: #ffffff !important;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -107,8 +107,8 @@
 
 .hockey-widget .search-input:focus {
     outline: none;
-    border-color: #5dade2;
-    box-shadow: 0 0 15px rgba(133, 193, 233, 0.3);
+    border-color: #5dade2 !important;
+    box-shadow: 0 0 15px rgba(133, 193, 233, 0.3) !important;
 }
 
 .hockey-widget .search-input::placeholder {
