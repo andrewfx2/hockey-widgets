@@ -527,7 +527,7 @@ class HockeyCardWidget {
         const cardsContainer = content.querySelector('.accordion-cards');
         const icon = header.querySelector('.accordion-icon');
         
-        header.style.background = 'linear-gradient(135deg, #004400 0%, #006600 100%)';
+        header.style.background = 'linear-gradient(135deg, #2d4a7c 0%, #3d5a8f 100%)';
         
         requestAnimationFrame(() => {
             if (this.expandedGroups.has(groupName)) {
@@ -563,7 +563,7 @@ class HockeyCardWidget {
                 const lazyLoader = cardsContainer.querySelector('.lazy-loading');
                 if (lazyLoader && this.isMobile) {
                     const cards = this.groupedData[groupName];
-                    lazyLoader.style.color = '#00ff00';
+                    lazyLoader.style.color = '#85c1e9';
                     lazyLoader.textContent = 'Loading cards...';
                     
                     requestAnimationFrame(() => {
@@ -730,10 +730,10 @@ class HockeyCardWidget {
             // Search input - exact pattern from working code
             searchInput.addEventListener('input', (e) => {
                 console.log('Search input event:', e.target.value);
-                e.target.style.borderColor = '#00aa00';
+                e.target.style.borderColor = '#6bb6ff';
                 debouncedSearch();
                 setTimeout(() => {
-                    e.target.style.borderColor = '#008800';
+                    e.target.style.borderColor = '#5dade2';
                 }, 200);
             });
             
@@ -741,19 +741,19 @@ class HockeyCardWidget {
             [teamFilter, setFilter, typeFilter].forEach(filter => {
                 filter.addEventListener('change', (e) => {
                     console.log('Filter change event:', e.target.id, e.target.value);
-                    e.target.style.borderColor = '#00cc00';
+                    e.target.style.borderColor = '#85c1e9';
                     this.applyFilters();
                     setTimeout(() => {
-                        e.target.style.borderColor = '#008800';
+                        e.target.style.borderColor = '#5dade2';
                     }, 300);
                 });
                 
                 filter.addEventListener('focus', (e) => {
-                    e.target.style.borderColor = '#00ff00';
+                    e.target.style.borderColor = '#85c1e9';
                 });
                 
                 filter.addEventListener('blur', (e) => {
-                    e.target.style.borderColor = '#008800';
+                    e.target.style.borderColor = '#5dade2';
                 });
             });
             
