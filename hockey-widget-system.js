@@ -1,4 +1,4 @@
-// hockey-widget-system.js - Updated with clean filter layout
+// hockey-widget-system.js - Complete widget engine with search fix
 class HockeyCardWidget {
     constructor(containerId, config) {
         console.log('Initializing hockey widget with container:', containerId);
@@ -41,7 +41,7 @@ class HockeyCardWidget {
         console.log('Starting widget initialization...');
         this.renderHTML();
         
-        // Wait for DOM to be updated
+        // Wait for DOM to be updated - using working timing
         await new Promise(resolve => setTimeout(resolve, 100));
         
         console.log('Setting up event listeners...');
@@ -74,29 +74,37 @@ class HockeyCardWidget {
             </div>
 
             <div class="main-container">
-                <div class="filter-section">
-                    <input type="text" id="searchInput-${this.containerId}" class="search-input" placeholder="Search cards...">
+                <div class="controls-container">
+                    <div class="search-section">
+                        <input type="text" id="searchInput-${this.containerId}" class="search-input" placeholder="Search cards...">
+                    </div>
                     
-                    <div class="filter-controls">
-                        <select id="typeFilter-${this.containerId}" class="filter-dropdown">
-                            <option value="">Type</option>
-                            <option value="rookie">Rookies</option>
-                            <option value="auto">Autos</option>
-                            <option value="mem">Memorabilia</option>
-                            <option value="serial">Serial #</option>
+                    <button class="filter-toggle" onclick="window.HockeyWidgets['${this.containerId}'].toggleFilters()">Filters & Actions</button>
+                    
+                    <div class="filter-section" id="filterSection-${this.containerId}">
+                        <select id="teamFilter-${this.containerId}" class="filter-select">
+                            <option value="">All Teams</option>
                         </select>
-                        
-                        <select id="teamFilter-${this.containerId}" class="filter-dropdown">
-                            <option value="">Team</option>
+                        <select id="setFilter-${this.containerId}" class="filter-select">
+                            <option value="">All Sets</option>
                         </select>
-                        
-                        <select id="groupBySelect-${this.containerId}" class="filter-dropdown" onchange="window.HockeyWidgets['${this.containerId}'].changeGroupBy()">
+                        <select id="typeFilter-${this.containerId}" class="filter-select">
+                            <option value="">All Types</option>
+                            <option value="rookie">Rookies Only</option>
+                            <option value="auto">Autos Only</option>
+                            <option value="mem">Memorabilia Only</option>
+                            <option value="serial">Serial # Only</option>
+                        </select>
+                    </div>
+
+                    <div class="group-by-section">
+                        <select id="groupBySelect-${this.containerId}" class="group-by-select" onchange="window.HockeyWidgets['${this.containerId}'].changeGroupBy()">
                             <option value="team">Group by Team</option>
                             <option value="player">Group by Player</option>
                             <option value="set">Group by Set</option>
                         </select>
                     </div>
-                    
+
                     <div class="action-buttons">
                         <button class="btn btn-secondary" onclick="window.HockeyWidgets['${this.containerId}'].loadSupabaseData()">Reset</button>
                     </div>
@@ -129,11 +137,11 @@ class HockeyCardWidget {
         console.log('HTML rendered for container:', this.containerId);
     }
     
-    // FIXED DEBOUNCE FUNCTION
+    // FIXED DEBOUNCE FUNCTION - solves the isMobile context issue
     debounce(func, wait) {
         let timeout;
-        const widget = this;
-        const isMobile = this.isMobile;
+        const widget = this; // Capture widget context
+        const isMobile = this.isMobile; // Capture isMobile value
         
         return function executedFunction(...args) {
             const later = () => {
@@ -143,6 +151,14 @@ class HockeyCardWidget {
             clearTimeout(timeout);
             timeout = setTimeout(later, isMobile ? 150 : wait);
         };
+    }
+
+    // Toggle filters on mobile
+    toggleFilters() {
+        const filterSection = document.getElementById(`filterSection-${this.containerId}`);
+        if (filterSection) {
+            filterSection.classList.toggle('open');
+        }
     }
 
     // Load ALL data from Supabase
@@ -215,11 +231,14 @@ class HockeyCardWidget {
     // Update filter dropdowns
     updateFilters() {
         const teams = [...new Set(this.allData.map(card => card['Team Name']).filter(Boolean))].sort();
+        const sets = [...new Set(this.allData.map(card => card['Set Name']).filter(Boolean))].sort();
         
         const teamFilter = document.getElementById(`teamFilter-${this.containerId}`);
+        const setFilter = document.getElementById(`setFilter-${this.containerId}`);
         
-        if (teamFilter) {
-            teamFilter.innerHTML = '<option value="">Team</option>';
+        if (teamFilter && setFilter) {
+            teamFilter.innerHTML = '<option value="">All Teams</option>';
+            setFilter.innerHTML = '<option value="">All Sets</option>';
             
             teams.forEach(team => {
                 const option = document.createElement('option');
@@ -227,27 +246,36 @@ class HockeyCardWidget {
                 option.textContent = team;
                 teamFilter.appendChild(option);
             });
+            
+            sets.forEach(set => {
+                const option = document.createElement('option');
+                option.value = set;
+                option.textContent = set;
+                setFilter.appendChild(option);
+            });
         }
     }
 
-    // Apply filters function
+    // Apply filters function - working Squarespace pattern
     applyFilters() {
         console.log('=== APPLYING FILTERS ===');
         
         const searchInput = document.getElementById(`searchInput-${this.containerId}`);
         const teamFilter = document.getElementById(`teamFilter-${this.containerId}`);
+        const setFilter = document.getElementById(`setFilter-${this.containerId}`);
         const typeFilter = document.getElementById(`typeFilter-${this.containerId}`);
         
-        if (!searchInput || !teamFilter || !typeFilter) {
+        if (!searchInput || !teamFilter || !setFilter || !typeFilter) {
             console.error('Filter elements not found during applyFilters');
             return;
         }
 
         const searchTerm = searchInput.value.toLowerCase().trim();
         const teamFilterValue = teamFilter.value;
+        const setFilterValue = setFilter.value;
         const typeFilterValue = typeFilter.value;
         
-        console.log('Filter values:', { searchTerm, teamFilterValue, typeFilterValue });
+        console.log('Filter values:', { searchTerm, teamFilterValue, setFilterValue, typeFilterValue });
         console.log('Total data to filter:', this.allData.length);
 
         this.filteredData = this.allData.filter(card => {
@@ -275,6 +303,11 @@ class HockeyCardWidget {
             
             // Team filter
             if (teamFilterValue && card['Team Name'] !== teamFilterValue) {
+                return false;
+            }
+            
+            // Set filter
+            if (setFilterValue && card['Set Name'] !== setFilterValue) {
                 return false;
             }
             
@@ -393,7 +426,7 @@ class HockeyCardWidget {
         return groupDiv;
     }
 
-    // Create card list item
+    // Create card list item with set name visible
     createCardListItem(card) {
         const badges = [];
         
@@ -501,15 +534,30 @@ class HockeyCardWidget {
                 this.expandedGroups.delete(groupName);
                 header.classList.remove('active');
                 content.classList.remove('open');
-                content.style.maxHeight = '0px';
-                content.style.overflow = 'hidden';
+                
+                if (this.isMobile) {
+                    content.style.maxHeight = '0px';
+                    content.style.overflow = 'hidden';
+                } else {
+                    content.style.maxHeight = '0px';
+                    content.style.overflow = 'hidden';
+                }
+                
                 icon.textContent = '▼';
             } else {
                 this.expandedGroups.add(groupName);
                 header.classList.add('active');
                 content.classList.add('open');
-                content.style.maxHeight = 'none';
-                content.style.overflow = 'visible';
+                
+                if (this.isMobile) {
+                    content.style.maxHeight = 'none';
+                    content.style.height = 'auto';
+                    content.style.overflow = 'visible';
+                } else {
+                    content.style.maxHeight = 'none';
+                    content.style.overflow = 'visible';
+                }
+                
                 icon.textContent = '▲';
                 
                 const lazyLoader = cardsContainer.querySelector('.lazy-loading');
@@ -654,11 +702,11 @@ class HockeyCardWidget {
         }
     }
 
-    // Setup event listeners with updated filter structure
+    // Setup event listeners using working Squarespace pattern
     setupEventListeners() {
         console.log('Setting up event listeners for container:', this.containerId);
         
-        // Create debounced search function
+        // Create debounced search function once (like working code)
         const debouncedSearch = this.debounce(() => {
             console.log('Debounced search executing...');
             this.applyFilters();
@@ -668,9 +716,10 @@ class HockeyCardWidget {
         const waitForElements = () => {
             const searchInput = document.getElementById(`searchInput-${this.containerId}`);
             const teamFilter = document.getElementById(`teamFilter-${this.containerId}`);
+            const setFilter = document.getElementById(`setFilter-${this.containerId}`);
             const typeFilter = document.getElementById(`typeFilter-${this.containerId}`);
             
-            if (!searchInput || !teamFilter || !typeFilter) {
+            if (!searchInput || !teamFilter || !setFilter || !typeFilter) {
                 console.log('Elements not ready, retrying in 100ms...');
                 setTimeout(waitForElements, 100);
                 return;
@@ -678,7 +727,7 @@ class HockeyCardWidget {
             
             console.log('All elements found, attaching listeners...');
             
-            // Search input
+            // Search input - exact pattern from working code
             searchInput.addEventListener('input', (e) => {
                 console.log('Search input event:', e.target.value);
                 e.target.style.borderColor = '#6bb6ff';
@@ -688,8 +737,8 @@ class HockeyCardWidget {
                 }, 200);
             });
             
-            // Filter dropdowns
-            [teamFilter, typeFilter].forEach(filter => {
+            // Filter dropdowns - exact pattern from working code  
+            [teamFilter, setFilter, typeFilter].forEach(filter => {
                 filter.addEventListener('change', (e) => {
                     console.log('Filter change event:', e.target.id, e.target.value);
                     e.target.style.borderColor = '#85c1e9';
@@ -721,6 +770,7 @@ class HockeyCardWidget {
         const searchInput = document.getElementById(`searchInput-${this.containerId}`);
         if (searchInput) {
             console.log('Search input found, current value:', searchInput.value);
+            // Manually trigger search
             this.applyFilters();
             console.log('Filter applied, filtered data length:', this.filteredData.length);
         } else {
