@@ -238,9 +238,9 @@
 .hockey-widget .stats-container {
     background: linear-gradient(135deg, #1a1a2e 0%, #242b5a 100%);
     color: #b3d9ff;
-    padding: 15px;
+    padding: 8px;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: -5px;
     text-align: center;
     border: 2px solid rgba(133, 193, 233, 0.3);
     box-shadow: 0 0 15px rgba(133, 193, 233, 0.2);
