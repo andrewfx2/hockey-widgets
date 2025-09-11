@@ -733,7 +733,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPA 2020-2021',
         title: 'SP Authentic 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/4af973ef-8824-4695-a2f6-39f1e93a42ba/spa20_21-removebg-preview.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -742,7 +742,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPA 2021-2022',
         title: 'SP Authentic 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/185fe808-362a-4e51-97d1-ba2cddbdf706/spa21_22-removebg-preview.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -751,7 +751,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPA 2022-2023',
         title: 'SP Authentic 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/db74f17d-a831-46a6-b87b-f7c901f52b85/spa22_23-removebg-preview.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -760,7 +760,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPA 2023-2024',
         title: 'SP Authentic 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/01ce3cbc-b061-46f0-8171-fe23101a9f1b/spa23_24-removebg-preview.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
@@ -769,7 +769,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'SPA 2024-2025',
         title: 'SP Authentic 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/85454503-ae34-4df6-a832-cbb9201e487e/spa24_25-removebg-preview.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
