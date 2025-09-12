@@ -54,19 +54,16 @@ class HockeyCardWidget {
     // Utility function to analyze card data for multiple entities
     analyzeCardData(card) {
         const teamName = card['Team Name'] || '';
-        const teamCity = card['Team City'] || '';
         const description = card['Description'] || '';
         
         // Split teams and players on common delimiters
         const teams = teamName.split(/[\/|]/).map(t => t.trim()).filter(t => t !== '');
-        const cities = teamCity.split(/[\/|]/).map(c => c.trim()).filter(c => c !== '');
         const players = description.split(/[\/|]/).map(p => p.trim()).filter(p => p !== '');
         
         return {
             hasMultipleTeams: teams.length > 1,
             hasMultiplePlayers: players.length > 1,
             teams: teams,
-            cities: cities,
             players: players,
             teamCount: teams.length,
             playerCount: players.length
@@ -156,22 +153,14 @@ class HockeyCardWidget {
                 return card['Set Name'] || '';
                 
             case 'player':
-                if (analysis.hasMultipleTeams) {
-                    return card['Set Name'] || '';
-                }
-                const playerTeamDisplay = analysis.cities[0] && analysis.teams[0] 
-                    ? `${analysis.cities[0]} ${analysis.teams[0]}`
-                    : analysis.teams[0] || '';
-                return playerTeamDisplay;
+                // ALWAYS show set name when grouped by player (like team grouping does)
+                return card['Set Name'] || '';
                 
             case 'set':
                 if (analysis.hasMultipleTeams) {
                     return `${analysis.teamCount} Teams`;
                 }
-                const setTeamDisplay = analysis.cities[0] && analysis.teams[0] 
-                    ? `${analysis.cities[0]} ${analysis.teams[0]}`
-                    : analysis.teams[0] || '';
-                return setTeamDisplay;
+                return analysis.teams[0] || '';
                 
             default:
                 return '';
@@ -369,10 +358,56 @@ class HockeyCardWidget {
         }
     }
 
-    // Update filter dropdowns
+    // Update filter dropdowns with cleaned individual team/set names
     updateFilters() {
-        const teams = [...new Set(this.allData.map(card => card['Team Name']).filter(Boolean))].sort();
-        const sets = [...new Set(this.allData.map(card => card['Set Name']).filter(Boolean))].sort();
+        console.log('Updating filters with cleaned data...');
+        
+        // Extract and clean team names
+        const allTeamNames = new Set();
+        this.allData.forEach(card => {
+            const teamName = card['Team Name'] || '';
+            console.log('Processing team name:', teamName);
+            
+            if (teamName.trim()) {
+                // Split on common delimiters and clean up
+                const teams = teamName.split(/[\/|,]/)
+                    .map(t => t.trim())
+                    .filter(t => t !== '' && t.length > 0);
+                
+                teams.forEach(team => {
+                    if (team && team.length > 0) {
+                        allTeamNames.add(team);
+                    }
+                });
+            }
+        });
+        
+        // Convert to sorted array
+        const teams = Array.from(allTeamNames).sort();
+        console.log('Cleaned teams:', teams);
+        
+        // Extract and clean set names
+        const allSetNames = new Set();
+        this.allData.forEach(card => {
+            const setName = card['Set Name'] || '';
+            
+            if (setName.trim()) {
+                // Split on common delimiters and clean up  
+                const sets = setName.split(/[\/|,]/)
+                    .map(s => s.trim())
+                    .filter(s => s !== '' && s.length > 0);
+                
+                sets.forEach(set => {
+                    if (set && set.length > 0) {
+                        allSetNames.add(set);
+                    }
+                });
+            }
+        });
+        
+        // Convert to sorted array
+        const sets = Array.from(allSetNames).sort();
+        console.log('Cleaned sets:', sets);
         
         const teamFilter = document.getElementById(`teamFilter-${this.containerId}`);
         const setFilter = document.getElementById(`setFilter-${this.containerId}`);
@@ -394,6 +429,10 @@ class HockeyCardWidget {
                 option.textContent = set;
                 setFilter.appendChild(option);
             });
+            
+            console.log('Filter dropdowns updated successfully');
+        } else {
+            console.error('Filter dropdown elements not found');
         }
     }
 
@@ -426,7 +465,6 @@ class HockeyCardWidget {
                     card['Set Name'] || '',
                     card['Card'] || '',
                     card['Description'] || '',
-                    card['Team City'] || '',
                     card['Team Name'] || '',
                     card['Rookie'] || '',
                     card['Auto'] || '',
@@ -632,6 +670,18 @@ class HockeyCardWidget {
                     <div class="detail-item">
                         <span class="detail-label">Odds:</span>
                         <span class="detail-value">${card['Odds']}</span>
+                    </div>
+                    ` : ''}
+                    ${this.currentGroupBy !== 'team' ? `
+                    <div class="detail-item">
+                        <span class="detail-label">Team:</span>
+                        <span class="detail-value">${card['Team Name'] || ''}</span>
+                    </div>
+                    ` : ''}
+                    ${this.currentGroupBy !== 'player' ? `
+                    <div class="detail-item">
+                        <span class="detail-label">Player:</span>
+                        <span class="detail-value">${card['Description'] || ''}</span>
                     </div>
                     ` : ''}
                     <div class="detail-item">
