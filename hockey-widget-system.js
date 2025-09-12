@@ -1,4 +1,4 @@
-// hockey-widget-system.js - Complete widget engine with search fix
+// hockey-widget-system.js - Complete widget engine with smart text handling
 class HockeyCardWidget {
     constructor(containerId, config) {
         console.log('Initializing hockey widget with container:', containerId);
@@ -35,6 +35,101 @@ class HockeyCardWidget {
         }
         
         this.init();
+    }
+    
+    // Helper to shorten common team names
+    shortenTeamName(teamName) {
+        const shortcuts = {
+            'Blue Jackets': 'CBJ',
+            'Blackhawks': 'CHI', 
+            'Ducks': 'ANA',
+            'Lightning': 'TBL',
+            'Maple Leafs': 'TOR',
+            'Canadiens': 'MTL',
+            'Rangers': 'NYR',
+            'Islanders': 'NYI',
+            'Devils': 'NJD',
+            'Flyers': 'PHI',
+            'Penguins': 'PIT',
+            'Capitals': 'WSH',
+            'Hurricanes': 'CAR',
+            'Panthers': 'FLA',
+            'Bruins': 'BOS',
+            'Sabres': 'BUF',
+            'Red Wings': 'DET',
+            'Senators': 'OTT',
+            'Oilers': 'EDM',
+            'Flames': 'CGY',
+            'Canucks': 'VAN',
+            'Jets': 'WPG',
+            'Avalanche': 'COL',
+            'Stars': 'DAL',
+            'Wild': 'MIN',
+            'Predators': 'NSH',
+            'Blues': 'STL',
+            'Kings': 'LAK',
+            'Sharks': 'SJS',
+            'Golden Knights': 'VGK',
+            'Kraken': 'SEA'
+        };
+        
+        return shortcuts[teamName] || teamName;
+    }
+    
+    // Smart text cleaning and formatting
+    cleanAndFormatText(text, maxLength = 25) {
+        if (!text) return { display: '', full: '', hasMore: false, count: 0, original: [] };
+        
+        // Split by common separators and clean
+        const parts = text.split(/[\/,|&]/)
+            .map(part => part.trim())
+            .filter(part => part.length > 0);
+        
+        // Remove duplicates while preserving order
+        const unique = [...new Set(parts)];
+        
+        const result = {
+            full: text,
+            original: unique,
+            count: unique.length,
+            hasMore: false,
+            display: ''
+        };
+        
+        // Single item (including deduplicated cases)
+        if (unique.length === 1) {
+            result.display = unique[0].length > maxLength 
+                ? unique[0].substring(0, maxLength) + '...' 
+                : unique[0];
+            return result;
+        }
+        
+        // Multiple different items
+        if (unique.length === 2) {
+            const combined = unique.join(' & ');
+            if (combined.length <= maxLength) {
+                result.display = combined;
+            } else {
+                // Try shortened version
+                const short1 = this.shortenTeamName(unique[0]);
+                const short2 = this.shortenTeamName(unique[1]);
+                const shortCombined = `${short1} & ${short2}`;
+                
+                if (shortCombined.length <= maxLength) {
+                    result.display = shortCombined;
+                } else {
+                    result.display = `${short1} +1 more`;
+                    result.hasMore = true;
+                }
+            }
+        } else if (unique.length > 2) {
+            // 3+ different items
+            const first = this.shortenTeamName(unique[0]);
+            result.display = `${first} +${unique.length - 1} more`;
+            result.hasMore = true;
+        }
+        
+        return result;
     }
     
     async init() {
@@ -426,7 +521,7 @@ class HockeyCardWidget {
         return groupDiv;
     }
 
-    // Create card list item with set name visible
+    // Create card list item with smart text handling
     createCardListItem(card) {
         const badges = [];
         
@@ -452,26 +547,46 @@ class HockeyCardWidget {
 
         const cardId = `card_${Math.random().toString(36).substr(2, 9)}`;
         
+        // Use smart text formatting
+        const descriptionData = this.cleanAndFormatText(card['Description'] || '');
+        const teamData = this.cleanAndFormatText(card['Team Name'] || '');
+        
         let cardTitle = '';
         let cardSubtitle = '';
+        let titleTooltip = '';
+        let subtitleTooltip = '';
         
         if (this.currentGroupBy === 'team') {
-            cardTitle = `${card['Description'] || ''}`.trim();
+            cardTitle = descriptionData.display;
+            titleTooltip = descriptionData.full;
             cardSubtitle = card['Set Name'] || '';
         } else if (this.currentGroupBy === 'player') {
-            cardTitle = `${card['Set Name'] || ''}`.trim();
-            cardSubtitle = `${card['Team City'] || ''} ${card['Team Name'] || ''}`.trim();
+            cardTitle = card['Set Name'] || '';
+            cardSubtitle = teamData.display;
+            subtitleTooltip = teamData.full;
         } else {
-            cardTitle = `${card['Description'] || ''}`.trim();
-            cardSubtitle = `${card['Team City'] || ''} ${card['Team Name'] || ''}`.trim();
+            cardTitle = descriptionData.display;
+            titleTooltip = descriptionData.full;
+            cardSubtitle = teamData.display;
+            subtitleTooltip = teamData.full;
         }
         
         return `
             <div class="card-list-item" onclick="window.HockeyWidgets['${this.containerId}'].toggleCardDetails('${cardId}')">
                 <div class="card-list-main">
                     <div class="card-list-info">
-                        <div class="card-list-title">${cardTitle}</div>
-                        <div class="card-list-subtitle">${cardSubtitle}</div>
+                        <div class="card-list-title" 
+                             title="${titleTooltip}"
+                             ${descriptionData.hasMore ? 'data-expandable="true"' : ''}>
+                            ${cardTitle}
+                            ${descriptionData.hasMore ? '<span class="expand-indicator">⋯</span>' : ''}
+                        </div>
+                        <div class="card-list-subtitle" 
+                             title="${subtitleTooltip}"
+                             ${teamData.hasMore ? 'data-expandable="true"' : ''}>
+                            ${cardSubtitle}
+                            ${teamData.hasMore ? '<span class="expand-indicator">⋯</span>' : ''}
+                        </div>
                     </div>
                     <div class="card-list-badges">
                         ${badges.join('')}
@@ -488,6 +603,18 @@ class HockeyCardWidget {
                         <span class="detail-label">Card #:</span>
                         <span class="detail-value">${card['Card'] || ''}</span>
                     </div>
+                    ${teamData.original.length > 0 ? `
+                    <div class="detail-item">
+                        <span class="detail-label">Full Teams:</span>
+                        <span class="detail-value">${teamData.original.join(', ')}</span>
+                    </div>
+                    ` : ''}
+                    ${descriptionData.original.length > 0 ? `
+                    <div class="detail-item">
+                        <span class="detail-label">Full Description:</span>
+                        <span class="detail-value">${descriptionData.original.join(', ')}</span>
+                    </div>
+                    ` : ''}
                     ${card["SP's"] && card["SP's"].toString().trim() !== '' ? `
                     <div class="detail-item">
                         <span class="detail-label">SP's:</span>
@@ -500,13 +627,13 @@ class HockeyCardWidget {
                         <span class="detail-value">${card['Odds']}</span>
                     </div>
                     ` : ''}
-                    ${this.currentGroupBy !== 'team' ? `
+                    ${this.currentGroupBy !== 'team' && teamData.original.length === 1 ? `
                     <div class="detail-item">
                         <span class="detail-label">Team:</span>
                         <span class="detail-value">${card['Team City'] || ''} ${card['Team Name'] || ''}</span>
                     </div>
                     ` : ''}
-                    ${this.currentGroupBy !== 'player' ? `
+                    ${this.currentGroupBy !== 'player' && descriptionData.original.length === 1 ? `
                     <div class="detail-item">
                         <span class="detail-label">Player:</span>
                         <span class="detail-value">${card['Description'] || ''}</span>
