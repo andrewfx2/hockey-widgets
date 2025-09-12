@@ -355,6 +355,7 @@
 
 .hockey-widget .card-list-info {
     flex: 1;
+    min-width: 0; /* Allow flex item to shrink */
 }
 
 .hockey-widget .card-list-title {
@@ -363,11 +364,47 @@
     color: #ffffff;
     margin-bottom: 2px;
     line-height: 1.2;
+    /* Smart text overflow handling */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
 }
 
 .hockey-widget .card-list-subtitle {
     font-size: 14px;
     color: #cccccc;
+    /* Smart text overflow handling */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+/* Smart text indicators and expandability */
+.hockey-widget .expand-indicator {
+    color: #85c1e9;
+    font-weight: bold;
+    margin-left: 4px;
+    opacity: 0.7;
+    font-size: 12px;
+}
+
+.hockey-widget .card-list-title[data-expandable="true"],
+.hockey-widget .card-list-subtitle[data-expandable="true"] {
+    cursor: help;
+}
+
+.hockey-widget .card-list-title[data-expandable="true"]:hover,
+.hockey-widget .card-list-subtitle[data-expandable="true"]:hover {
+    background: rgba(133, 193, 233, 0.1);
+    border-radius: 3px;
+    padding: 2px 4px;
+    margin: -2px -4px;
+    white-space: normal;
+    word-break: break-word;
+    position: relative;
+    z-index: 10;
 }
 
 .hockey-widget .card-list-badges {
@@ -375,6 +412,7 @@
     gap: 5px;
     flex-wrap: wrap;
     justify-content: flex-end;
+    flex-shrink: 0;
 }
 
 .hockey-widget .badge {
@@ -463,6 +501,7 @@
 .hockey-widget .detail-value {
     color: #b3d9ff;
     text-align: right;
+    word-break: break-word;
 }
 
 /* Pagination */
@@ -591,6 +630,26 @@
         width: 160px;
         height: 130px;
     }
+
+    /* More aggressive text truncation on mobile */
+    .hockey-widget .card-list-title {
+        max-width: calc(100vw - 140px); /* Account for badges and padding */
+        font-size: 13px;
+    }
+    
+    .hockey-widget .card-list-subtitle {
+        max-width: calc(100vw - 140px);
+        font-size: 12px;
+    }
+
+    /* Improved hover states for mobile */
+    .hockey-widget .card-list-title[data-expandable="true"]:hover,
+    .hockey-widget .card-list-subtitle[data-expandable="true"]:hover {
+        background: rgba(133, 193, 233, 0.15);
+        padding: 3px 6px;
+        margin: -3px -6px;
+        border-radius: 4px;
+    }
 }
 
 /* Reduce motion for better performance */
@@ -624,6 +683,12 @@
 
     .hockey-widget .detail-grid {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    /* Better text handling on larger screens */
+    .hockey-widget .card-list-title,
+    .hockey-widget .card-list-subtitle {
+        max-width: none;
     }
 }
 
