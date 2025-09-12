@@ -105,19 +105,40 @@ class HockeyCardWidget {
         switch (this.currentGroupBy) {
             case 'team':
                 if (analysis.hasMultiplePlayers) {
-                    return `Multiple Players (${analysis.playerCount})`;
+                    // Show first 2 players + count of remaining
+                    const firstTwo = analysis.players.slice(0, 2);
+                    const remaining = analysis.playerCount - 2;
+                    if (remaining > 0) {
+                        return `${firstTwo.join(', ')} + ${remaining} more`;
+                    } else {
+                        return firstTwo.join(', ');
+                    }
                 }
                 return analysis.players[0] || 'Unknown Player';
                 
             case 'player':
                 if (analysis.hasMultipleTeams) {
-                    return `Multiple Teams (${analysis.teamCount})`;
+                    // Show first 2 teams + count of remaining
+                    const firstTwo = analysis.teams.slice(0, 2);
+                    const remaining = analysis.teamCount - 2;
+                    if (remaining > 0) {
+                        return `${firstTwo.join(', ')} + ${remaining} more`;
+                    } else {
+                        return firstTwo.join(', ');
+                    }
                 }
                 return analysis.teams[0] || 'Unknown Team';
                 
             case 'set':
                 if (analysis.hasMultiplePlayers) {
-                    return `Multiple Players (${analysis.playerCount})`;
+                    // Show first 2 players + count of remaining
+                    const firstTwo = analysis.players.slice(0, 2);
+                    const remaining = analysis.playerCount - 2;
+                    if (remaining > 0) {
+                        return `${firstTwo.join(', ')} + ${remaining} more`;
+                    } else {
+                        return firstTwo.join(', ');
+                    }
                 }
                 return analysis.players[0] || 'Unknown Player';
                 
