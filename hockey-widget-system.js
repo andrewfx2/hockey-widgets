@@ -615,7 +615,7 @@ class HockeyCardWidget {
                     ` : ''}
                     <div class="detail-item">
                         <span class="detail-label">Full Teams:</span>
-                        <span class="detail-value">${card['Team City'] || ''} ${card['Team Name'] || ''}</span>
+                        <span class="detail-value">${card['Team Name'] || ''}</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Full Players:</span>
