@@ -505,8 +505,8 @@ class HockeyCardWidget {
         
         groupDiv.innerHTML = `
             <div class="accordion-header ${isExpanded ? 'active' : ''}" onclick="window.HockeyWidgets['${this.containerId}'].toggleAccordionGroup('${groupName.replace(/'/g, "\\'")}')">
-                <div class="accordion-title">
-                    ${groupName}
+                <div class="accordion-title" title="${groupNameData.full}">
+                    ${displayGroupName}
                     <span class="accordion-count">${cards.length}</span>
                 </div>
                 <span class="accordion-icon">${isExpanded ? '▲' : '▼'}</span>
