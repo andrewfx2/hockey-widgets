@@ -500,11 +500,11 @@
 }
 
 /* Special styling for full details in multiple entity cards */
-.hockey-widget .detail-item .detail-label:contains("Full") {
+.hockey-widget .multiple-entities .detail-label {
     color: #ffcc80;
 }
 
-.hockey-widget .detail-item .detail-value:has(.detail-label:contains("Full")) {
+.hockey-widget .multiple-entities .detail-value {
     color: #fff2cc;
     font-weight: 500;
 }
