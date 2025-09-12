@@ -460,17 +460,25 @@ class HockeyCardWidget {
         this.groupedData = {};
         
         this.filteredData.forEach(card => {
+            let rawValue = '';
             let groupKey = '';
             
             switch (this.currentGroupBy) {
                 case 'set':
-                    groupKey = card['Set Name'] || 'Unknown Set';
+                    rawValue = card['Set Name'] || 'Unknown Set';
+                    groupKey = rawValue;
                     break;
                 case 'team':
-                    groupKey = card['Team Name'] || 'Unknown Team';
+                    rawValue = card['Team Name'] || 'Unknown Team';
+                    // Clean and get the primary team name for grouping
+                    const teamData = this.cleanAndFormatText(rawValue);
+                    groupKey = teamData.original[0] || rawValue; // Use first unique team
                     break;
                 case 'player':
-                    groupKey = card['Description'] || 'Unknown Player';
+                    rawValue = card['Description'] || 'Unknown Player';
+                    // Clean and get the primary player name for grouping  
+                    const playerData = this.cleanAndFormatText(rawValue);
+                    groupKey = playerData.original[0] || rawValue; // Use first unique player
                     break;
             }
             
