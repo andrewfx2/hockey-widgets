@@ -1,4 +1,4 @@
-// hockey-widget-system.js - Complete widget engine with search fix
+// hockey-widget-system.js - Complete widget engine with smart grouping and badge deduplication
 class HockeyCardWidget {
     constructor(containerId, config) {
         console.log('Initializing hockey widget with container:', containerId);
@@ -35,6 +35,126 @@ class HockeyCardWidget {
         }
         
         this.init();
+    }
+    
+    // Utility function to deduplicate badges
+    deduplicateBadge(badgeValue) {
+        if (!badgeValue || badgeValue.toString().trim() === '') return '';
+        
+        const value = badgeValue.toString().trim();
+        
+        // Split on common delimiters and get unique values
+        const parts = value.split(/[-\/|,]/).map(part => part.trim()).filter(part => part !== '');
+        const uniqueParts = [...new Set(parts)];
+        
+        // Return single value if all parts are the same, otherwise join with single delimiter
+        return uniqueParts.length === 1 ? uniqueParts[0] : uniqueParts.join('-');
+    }
+    
+    // Utility function to analyze card data for multiple entities
+    analyzeCardData(card) {
+        const teamName = card['Team Name'] || '';
+        const teamCity = card['Team City'] || '';
+        const description = card['Description'] || '';
+        
+        // Split teams and players on common delimiters
+        const teams = teamName.split(/[\/|]/).map(t => t.trim()).filter(t => t !== '');
+        const cities = teamCity.split(/[\/|]/).map(c => c.trim()).filter(c => c !== '');
+        const players = description.split(/[\/|]/).map(p => p.trim()).filter(p => p !== '');
+        
+        return {
+            hasMultipleTeams: teams.length > 1,
+            hasMultiplePlayers: players.length > 1,
+            teams: teams,
+            cities: cities,
+            players: players,
+            teamCount: teams.length,
+            playerCount: players.length
+        };
+    }
+    
+    // Get display group key for a card
+    getGroupKey(card, groupBy) {
+        const analysis = this.analyzeCardData(card);
+        
+        switch (groupBy) {
+            case 'team':
+                if (analysis.hasMultipleTeams) {
+                    return `Multiple Teams (${analysis.teamCount})`;
+                }
+                return analysis.teams[0] || 'Unknown Team';
+                
+            case 'player':
+                if (analysis.hasMultiplePlayers) {
+                    return `Multiple Players (${analysis.playerCount})`;
+                }
+                return analysis.players[0] || 'Unknown Player';
+                
+            case 'set':
+                return card['Set Name'] || 'Unknown Set';
+                
+            default:
+                return 'Unknown';
+        }
+    }
+    
+    // Get display title for a card based on current grouping
+    getCardDisplayTitle(card) {
+        const analysis = this.analyzeCardData(card);
+        
+        switch (this.currentGroupBy) {
+            case 'team':
+                if (analysis.hasMultiplePlayers) {
+                    return `Multiple Players (${analysis.playerCount})`;
+                }
+                return analysis.players[0] || 'Unknown Player';
+                
+            case 'player':
+                if (analysis.hasMultipleTeams) {
+                    return `Multiple Teams (${analysis.teamCount})`;
+                }
+                return analysis.teams[0] || 'Unknown Team';
+                
+            case 'set':
+                if (analysis.hasMultiplePlayers) {
+                    return `Multiple Players (${analysis.playerCount})`;
+                }
+                return analysis.players[0] || 'Unknown Player';
+                
+            default:
+                return card['Description'] || 'Unknown';
+        }
+    }
+    
+    // Get display subtitle for a card based on current grouping
+    getCardDisplaySubtitle(card) {
+        const analysis = this.analyzeCardData(card);
+        
+        switch (this.currentGroupBy) {
+            case 'team':
+                return card['Set Name'] || '';
+                
+            case 'player':
+                if (analysis.hasMultipleTeams) {
+                    return card['Set Name'] || '';
+                }
+                const teamDisplay = analysis.cities[0] && analysis.teams[0] 
+                    ? `${analysis.cities[0]} ${analysis.teams[0]}`
+                    : analysis.teams[0] || '';
+                return teamDisplay;
+                
+            case 'set':
+                if (analysis.hasMultipleTeams) {
+                    return `${analysis.teamCount} Teams`;
+                }
+                const teamDisplay = analysis.cities[0] && analysis.teams[0] 
+                    ? `${analysis.cities[0]} ${analysis.teams[0]}`
+                    : analysis.teams[0] || '';
+                return teamDisplay;
+                
+            default:
+                return '';
+        }
     }
     
     async init() {
@@ -351,19 +471,7 @@ class HockeyCardWidget {
         this.groupedData = {};
         
         this.filteredData.forEach(card => {
-            let groupKey = '';
-            
-            switch (this.currentGroupBy) {
-                case 'set':
-                    groupKey = card['Set Name'] || 'Unknown Set';
-                    break;
-                case 'team':
-                    groupKey = card['Team Name'] || 'Unknown Team';
-                    break;
-                case 'player':
-                    groupKey = card['Description'] || 'Unknown Player';
-                    break;
-            }
+            const groupKey = this.getGroupKey(card, this.currentGroupBy);
             
             if (!this.groupedData[groupKey]) {
                 this.groupedData[groupKey] = [];
@@ -398,6 +506,11 @@ class HockeyCardWidget {
         const isExpanded = this.expandedGroups.has(groupName);
         
         groupDiv.className = 'accordion-group';
+        // Add special class for multiple entity groups
+        if (groupName.startsWith('Multiple Teams') || groupName.startsWith('Multiple Players')) {
+            groupDiv.classList.add('multiple-entities');
+        }
+        
         groupDiv.setAttribute('data-group-name', groupName);
         groupDiv.setAttribute('data-card-count', cards.length);
         
@@ -426,20 +539,24 @@ class HockeyCardWidget {
         return groupDiv;
     }
 
-    // Create card list item with set name visible
+    // Create card list item with smart titles and deduplicated badges
     createCardListItem(card) {
         const badges = [];
         
+        // Deduplicated badge processing
         if (card['Rookie'] && card['Rookie'].toString().trim() !== '' && card['Rookie'].toString().trim() !== '0' && card['Rookie'].toString().toLowerCase() !== 'no') {
-            badges.push(`<span class="badge badge-rookie">${card['Rookie']}</span>`);
+            const rookieBadge = this.deduplicateBadge(card['Rookie']);
+            if (rookieBadge) badges.push(`<span class="badge badge-rookie">${rookieBadge}</span>`);
         }
         
         if (card['Auto'] && card['Auto'].toString().trim() !== '' && card['Auto'].toString().trim() !== '0' && card['Auto'].toString().toLowerCase() !== 'no') {
-            badges.push(`<span class="badge badge-auto">${card['Auto']}</span>`);
+            const autoBadge = this.deduplicateBadge(card['Auto']);
+            if (autoBadge) badges.push(`<span class="badge badge-auto">${autoBadge}</span>`);
         }
         
         if (card['Mem'] && card['Mem'].toString().trim() !== '' && card['Mem'].toString().trim() !== '0' && card['Mem'].toString().toLowerCase() !== 'no') {
-            badges.push(`<span class="badge badge-mem">${card['Mem']}</span>`);
+            const memBadge = this.deduplicateBadge(card['Mem']);
+            if (memBadge) badges.push(`<span class="badge badge-mem">${memBadge}</span>`);
         }
         
         if (card["Serial #'d"] && card["Serial #'d"].toString().trim() !== '' && card["Serial #'d"].toString().trim() !== '0') {
@@ -452,19 +569,9 @@ class HockeyCardWidget {
 
         const cardId = `card_${Math.random().toString(36).substr(2, 9)}`;
         
-        let cardTitle = '';
-        let cardSubtitle = '';
-        
-        if (this.currentGroupBy === 'team') {
-            cardTitle = `${card['Description'] || ''}`.trim();
-            cardSubtitle = card['Set Name'] || '';
-        } else if (this.currentGroupBy === 'player') {
-            cardTitle = `${card['Set Name'] || ''}`.trim();
-            cardSubtitle = `${card['Team City'] || ''} ${card['Team Name'] || ''}`.trim();
-        } else {
-            cardTitle = `${card['Description'] || ''}`.trim();
-            cardSubtitle = `${card['Team City'] || ''} ${card['Team Name'] || ''}`.trim();
-        }
+        // Use smart display logic
+        const cardTitle = this.getCardDisplayTitle(card);
+        const cardSubtitle = this.getCardDisplaySubtitle(card);
         
         return `
             <div class="card-list-item" onclick="window.HockeyWidgets['${this.containerId}'].toggleCardDetails('${cardId}')">
@@ -500,18 +607,14 @@ class HockeyCardWidget {
                         <span class="detail-value">${card['Odds']}</span>
                     </div>
                     ` : ''}
-                    ${this.currentGroupBy !== 'team' ? `
                     <div class="detail-item">
-                        <span class="detail-label">Team:</span>
+                        <span class="detail-label">Full Teams:</span>
                         <span class="detail-value">${card['Team City'] || ''} ${card['Team Name'] || ''}</span>
                     </div>
-                    ` : ''}
-                    ${this.currentGroupBy !== 'player' ? `
                     <div class="detail-item">
-                        <span class="detail-label">Player:</span>
+                        <span class="detail-label">Full Players:</span>
                         <span class="detail-value">${card['Description'] || ''}</span>
                     </div>
-                    ` : ''}
                 </div>
             </div>
         `;
@@ -607,11 +710,16 @@ class HockeyCardWidget {
         const accordionContainer = document.getElementById(`accordionContainer-${this.containerId}`);
         if (!accordionContainer) return;
         
-        const groupNames = Object.keys(this.groupedData).sort();
+        const groupNames = Object.keys(this.groupedData);
+        
+        // Sort groups: regular groups first alphabetically, then multiple entity groups at the end
+        const regularGroups = groupNames.filter(name => !name.startsWith('Multiple')).sort();
+        const multipleGroups = groupNames.filter(name => name.startsWith('Multiple')).sort();
+        const sortedGroupNames = [...regularGroups, ...multipleGroups];
         
         accordionContainer.innerHTML = '';
 
-        if (groupNames.length === 0) {
+        if (sortedGroupNames.length === 0) {
             accordionContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #cccccc;">No cards found matching your filters.</div>';
             const paginationContainer = document.getElementById(`paginationContainer-${this.containerId}`);
             if (paginationContainer) {
@@ -622,7 +730,7 @@ class HockeyCardWidget {
 
         const fragment = document.createDocumentFragment();
         
-        groupNames.forEach(groupName => {
+        sortedGroupNames.forEach(groupName => {
             const cards = this.groupedData[groupName];
             const groupElement = this.createAccordionGroup(groupName, cards);
             fragment.appendChild(groupElement);
