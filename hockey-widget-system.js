@@ -138,19 +138,19 @@ class HockeyCardWidget {
                 if (analysis.hasMultipleTeams) {
                     return card['Set Name'] || '';
                 }
-                const teamDisplay = analysis.cities[0] && analysis.teams[0] 
+                const playerTeamDisplay = analysis.cities[0] && analysis.teams[0] 
                     ? `${analysis.cities[0]} ${analysis.teams[0]}`
                     : analysis.teams[0] || '';
-                return teamDisplay;
+                return playerTeamDisplay;
                 
             case 'set':
                 if (analysis.hasMultipleTeams) {
                     return `${analysis.teamCount} Teams`;
                 }
-                const teamDisplay = analysis.cities[0] && analysis.teams[0] 
+                const setTeamDisplay = analysis.cities[0] && analysis.teams[0] 
                     ? `${analysis.cities[0]} ${analysis.teams[0]}`
                     : analysis.teams[0] || '';
-                return teamDisplay;
+                return setTeamDisplay;
                 
             default:
                 return '';
