@@ -642,14 +642,7 @@
         font-size: 12px;
     }
 
-    /* Improved hover states for mobile */
-    .hockey-widget .card-list-title[data-expandable="true"]:hover,
-    .hockey-widget .card-list-subtitle[data-expandable="true"]:hover {
-        background: rgba(133, 193, 233, 0.15);
-        padding: 3px 6px;
-        margin: -3px -6px;
-        border-radius: 4px;
-    }
+    /* Improved hover states for mobile - REMOVED */
 }
 
 /* Reduce motion for better performance */
