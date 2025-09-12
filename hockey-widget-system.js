@@ -421,14 +421,20 @@ class HockeyCardWidget {
                 }
             }
             
-            // Team filter
-            if (teamFilterValue && card['Team Name'] !== teamFilterValue) {
-                return false;
+            // Team filter - check if selected team is contained in the card's team name
+            if (teamFilterValue) {
+                const cardTeamName = card['Team Name'] || '';
+                if (!cardTeamName.includes(teamFilterValue)) {
+                    return false;
+                }
             }
             
-            // Set filter
-            if (setFilterValue && card['Set Name'] !== setFilterValue) {
-                return false;
+            // Set filter - check if selected set is contained in the card's set name
+            if (setFilterValue) {
+                const cardSetName = card['Set Name'] || '';
+                if (!cardSetName.includes(setFilterValue)) {
+                    return false;
+                }
             }
             
             // Type filter
