@@ -132,6 +132,20 @@ class HockeyCardWidget {
         return result;
     }
     
+    // Helper function to clean badge text
+    cleanBadgeText(text) {
+        if (!text) return '';
+        
+        // Split by common separators and get first unique value
+        const parts = text.toString().split(/[-\/,|&]/)
+            .map(part => part.trim())
+            .filter(part => part.length > 0);
+        
+        // Return first unique part
+        const unique = [...new Set(parts)];
+        return unique[0] || text;
+    }
+    
     async init() {
         console.log('Starting widget initialization...');
         this.renderHTML();
@@ -491,6 +505,10 @@ class HockeyCardWidget {
     createAccordionGroup(groupName, cards) {
         const groupDiv = document.createElement('div');
         const isExpanded = this.expandedGroups.has(groupName);
+        
+        // Apply smart text formatting to group name as well
+        const groupNameData = this.cleanAndFormatText(groupName, 35); // Longer limit for headers
+        const displayGroupName = groupNameData.display;
         
         groupDiv.className = 'accordion-group';
         groupDiv.setAttribute('data-group-name', groupName);
