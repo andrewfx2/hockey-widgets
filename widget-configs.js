@@ -678,6 +678,15 @@ const HOCKEY_WIDGET_CONFIGS = {
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultGroupBy: 'team'
     },
+        'artifacts-2025-26': {
+        tableName: 'Artifacts 2025-2026',
+        title: 'Artifacts 2025-2026',
+        description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/0be29a98-6893-4d0c-9d5c-8f30e93206fd/output-onlinepngtools.png?content-type=image%2Fpng',
+        supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
+        supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
+        defaultGroupBy: 'team'
+    },
 
     // Skybox
     'skybox-2023-24': {
