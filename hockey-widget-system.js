@@ -672,18 +672,14 @@ class HockeyCardWidget {
                         <span class="detail-value">${card['Odds']}</span>
                     </div>
                     ` : ''}
-                    ${this.currentGroupBy !== 'team' ? `
                     <div class="detail-item">
                         <span class="detail-label">Team:</span>
                         <span class="detail-value">${card['Team Name'] || ''}</span>
                     </div>
-                    ` : ''}
-                    ${this.currentGroupBy !== 'player' ? `
                     <div class="detail-item">
                         <span class="detail-label">Player:</span>
                         <span class="detail-value">${card['Description'] || ''}</span>
                     </div>
-                    ` : ''}
                 </div>
             </div>
         `;
