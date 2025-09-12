@@ -1,4 +1,4 @@
-// hockey-widget-system.js - Complete widget engine with smart text handling
+// hockey-widget-system.js - Complete widget engine with search fix
 class HockeyCardWidget {
     constructor(containerId, config) {
         console.log('Initializing hockey widget with container:', containerId);
@@ -35,115 +35,6 @@ class HockeyCardWidget {
         }
         
         this.init();
-    }
-    
-    // Helper to shorten common team names
-    shortenTeamName(teamName) {
-        const shortcuts = {
-            'Blue Jackets': 'CBJ',
-            'Blackhawks': 'CHI', 
-            'Ducks': 'ANA',
-            'Lightning': 'TBL',
-            'Maple Leafs': 'TOR',
-            'Canadiens': 'MTL',
-            'Rangers': 'NYR',
-            'Islanders': 'NYI',
-            'Devils': 'NJD',
-            'Flyers': 'PHI',
-            'Penguins': 'PIT',
-            'Capitals': 'WSH',
-            'Hurricanes': 'CAR',
-            'Panthers': 'FLA',
-            'Bruins': 'BOS',
-            'Sabres': 'BUF',
-            'Red Wings': 'DET',
-            'Senators': 'OTT',
-            'Oilers': 'EDM',
-            'Flames': 'CGY',
-            'Canucks': 'VAN',
-            'Jets': 'WPG',
-            'Avalanche': 'COL',
-            'Stars': 'DAL',
-            'Wild': 'MIN',
-            'Predators': 'NSH',
-            'Blues': 'STL',
-            'Kings': 'LAK',
-            'Sharks': 'SJS',
-            'Golden Knights': 'VGK',
-            'Kraken': 'SEA'
-        };
-        
-        return shortcuts[teamName] || teamName;
-    }
-    
-    // Smart text cleaning and formatting
-    cleanAndFormatText(text, maxLength = 25) {
-        if (!text) return { display: '', full: '', hasMore: false, count: 0, original: [] };
-        
-        // Split by common separators and clean
-        const parts = text.split(/[\/,|&]/)
-            .map(part => part.trim())
-            .filter(part => part.length > 0);
-        
-        // Remove duplicates while preserving order
-        const unique = [...new Set(parts)];
-        
-        const result = {
-            full: text,
-            original: unique,
-            count: unique.length,
-            hasMore: false,
-            display: ''
-        };
-        
-        // Single item (including deduplicated cases)
-        if (unique.length === 1) {
-            result.display = unique[0].length > maxLength 
-                ? unique[0].substring(0, maxLength) + '...' 
-                : unique[0];
-            return result;
-        }
-        
-        // Multiple different items
-        if (unique.length === 2) {
-            const combined = unique.join(' & ');
-            if (combined.length <= maxLength) {
-                result.display = combined;
-            } else {
-                // Try shortened version
-                const short1 = this.shortenTeamName(unique[0]);
-                const short2 = this.shortenTeamName(unique[1]);
-                const shortCombined = `${short1} & ${short2}`;
-                
-                if (shortCombined.length <= maxLength) {
-                    result.display = shortCombined;
-                } else {
-                    result.display = `${short1} +1 more`;
-                    result.hasMore = true;
-                }
-            }
-        } else if (unique.length > 2) {
-            // 3+ different items
-            const first = this.shortenTeamName(unique[0]);
-            result.display = `${first} +${unique.length - 1} more`;
-            result.hasMore = true;
-        }
-        
-        return result;
-    }
-    
-    // Helper function to clean badge text
-    cleanBadgeText(text) {
-        if (!text) return '';
-        
-        // Split by common separators and get first unique value
-        const parts = text.toString().split(/[-\/,|&]/)
-            .map(part => part.trim())
-            .filter(part => part.length > 0);
-        
-        // Return first unique part
-        const unique = [...new Set(parts)];
-        return unique[0] || text;
     }
     
     async init() {
@@ -460,25 +351,17 @@ class HockeyCardWidget {
         this.groupedData = {};
         
         this.filteredData.forEach(card => {
-            let rawValue = '';
             let groupKey = '';
             
             switch (this.currentGroupBy) {
                 case 'set':
-                    rawValue = card['Set Name'] || 'Unknown Set';
-                    groupKey = rawValue;
+                    groupKey = card['Set Name'] || 'Unknown Set';
                     break;
                 case 'team':
-                    rawValue = card['Team Name'] || 'Unknown Team';
-                    // Clean and get the primary team name for grouping
-                    const teamData = this.cleanAndFormatText(rawValue);
-                    groupKey = teamData.original[0] || rawValue; // Use first unique team
+                    groupKey = card['Team Name'] || 'Unknown Team';
                     break;
                 case 'player':
-                    rawValue = card['Description'] || 'Unknown Player';
-                    // Clean and get the primary player name for grouping  
-                    const playerData = this.cleanAndFormatText(rawValue);
-                    groupKey = playerData.original[0] || rawValue; // Use first unique player
+                    groupKey = card['Description'] || 'Unknown Player';
                     break;
             }
             
@@ -514,10 +397,6 @@ class HockeyCardWidget {
         const groupDiv = document.createElement('div');
         const isExpanded = this.expandedGroups.has(groupName);
         
-        // Apply smart text formatting to group name as well
-        const groupNameData = this.cleanAndFormatText(groupName, 35); // Longer limit for headers
-        const displayGroupName = groupNameData.display;
-        
         groupDiv.className = 'accordion-group';
         groupDiv.setAttribute('data-group-name', groupName);
         groupDiv.setAttribute('data-card-count', cards.length);
@@ -531,8 +410,8 @@ class HockeyCardWidget {
         
         groupDiv.innerHTML = `
             <div class="accordion-header ${isExpanded ? 'active' : ''}" onclick="window.HockeyWidgets['${this.containerId}'].toggleAccordionGroup('${groupName.replace(/'/g, "\\'")}')">
-                <div class="accordion-title" title="${groupNameData.full}">
-                    ${displayGroupName}
+                <div class="accordion-title">
+                    ${groupName}
                     <span class="accordion-count">${cards.length}</span>
                 </div>
                 <span class="accordion-icon">${isExpanded ? '▲' : '▼'}</span>
@@ -547,77 +426,52 @@ class HockeyCardWidget {
         return groupDiv;
     }
 
-    // Create card list item with smart text handling
+    // Create card list item with set name visible
     createCardListItem(card) {
         const badges = [];
         
         if (card['Rookie'] && card['Rookie'].toString().trim() !== '' && card['Rookie'].toString().trim() !== '0' && card['Rookie'].toString().toLowerCase() !== 'no') {
-            const cleanRookie = this.cleanBadgeText(card['Rookie']);
-            badges.push(`<span class="badge badge-rookie">${cleanRookie}</span>`);
+            badges.push(`<span class="badge badge-rookie">${card['Rookie']}</span>`);
         }
         
         if (card['Auto'] && card['Auto'].toString().trim() !== '' && card['Auto'].toString().trim() !== '0' && card['Auto'].toString().toLowerCase() !== 'no') {
-            const cleanAuto = this.cleanBadgeText(card['Auto']);
-            badges.push(`<span class="badge badge-auto">${cleanAuto}</span>`);
+            badges.push(`<span class="badge badge-auto">${card['Auto']}</span>`);
         }
         
         if (card['Mem'] && card['Mem'].toString().trim() !== '' && card['Mem'].toString().trim() !== '0' && card['Mem'].toString().toLowerCase() !== 'no') {
-            const cleanMem = this.cleanBadgeText(card['Mem']);
-            badges.push(`<span class="badge badge-mem">${cleanMem}</span>`);
+            badges.push(`<span class="badge badge-mem">${card['Mem']}</span>`);
         }
         
         if (card["Serial #'d"] && card["Serial #'d"].toString().trim() !== '' && card["Serial #'d"].toString().trim() !== '0') {
-            const cleanSerial = this.cleanBadgeText(card["Serial #'d"]);
-            badges.push(`<span class="badge badge-serial">/${cleanSerial}</span>`);
+            badges.push(`<span class="badge badge-serial">/${card["Serial #'d"]}</span>`);
         }
         
         if (card['Point'] && card['Point'].toString().trim() !== '' && card['Point'].toString().trim() !== '0') {
-            const cleanPoint = this.cleanBadgeText(card['Point']);
-            badges.push(`<span class="badge badge-point">${cleanPoint} pts</span>`);
+            badges.push(`<span class="badge badge-point">${card['Point']} pts</span>`);
         }
 
         const cardId = `card_${Math.random().toString(36).substr(2, 9)}`;
         
-        // Use smart text formatting
-        const descriptionData = this.cleanAndFormatText(card['Description'] || '');
-        const teamData = this.cleanAndFormatText(card['Team Name'] || '');
-        
         let cardTitle = '';
         let cardSubtitle = '';
-        let titleTooltip = '';
-        let subtitleTooltip = '';
         
         if (this.currentGroupBy === 'team') {
-            cardTitle = descriptionData.display;
-            titleTooltip = descriptionData.full;
+            cardTitle = `${card['Description'] || ''}`.trim();
             cardSubtitle = card['Set Name'] || '';
         } else if (this.currentGroupBy === 'player') {
-            cardTitle = card['Set Name'] || '';
-            cardSubtitle = teamData.display;
-            subtitleTooltip = teamData.full;
+            cardTitle = `${card['Set Name'] || ''}`.trim();
+            cardSubtitle = `${card['Team City'] || ''} ${card['Team Name'] || ''}`.trim();
         } else {
-            cardTitle = descriptionData.display;
-            titleTooltip = descriptionData.full;
-            cardSubtitle = teamData.display;
-            subtitleTooltip = teamData.full;
+            cardTitle = `${card['Description'] || ''}`.trim();
+            cardSubtitle = `${card['Team City'] || ''} ${card['Team Name'] || ''}`.trim();
         }
         
         return `
             <div class="card-list-item" onclick="window.HockeyWidgets['${this.containerId}'].toggleCardDetails('${cardId}')">
                 <div class="card-list-main">
                     <div class="card-list-info">
-                        <div class="card-list-title" 
-                             title="${titleTooltip}"
-                             ${descriptionData.hasMore ? 'data-expandable="true"' : ''}>
-                            ${cardTitle}
-                            ${descriptionData.hasMore ? '<span class="expand-indicator">⋯</span>' : ''}
-                        </div>
-                        <div class="card-list-subtitle" 
-                             title="${subtitleTooltip}"
-                             ${teamData.hasMore ? 'data-expandable="true"' : ''}>
-                            ${cardSubtitle}
-                            ${teamData.hasMore ? '<span class="expand-indicator">⋯</span>' : ''}
-                        </div>
+                        <div class="card-list-title">${cardTitle}</div>
+                        <div class="card-list-subtitle">${cardSubtitle}</div>
                     </div>
                     <div class="card-list-badges">
                         ${badges.join('')}
@@ -634,18 +488,6 @@ class HockeyCardWidget {
                         <span class="detail-label">Card #:</span>
                         <span class="detail-value">${card['Card'] || ''}</span>
                     </div>
-                    ${teamData.original.length > 0 ? `
-                    <div class="detail-item">
-                        <span class="detail-label">Full Teams:</span>
-                        <span class="detail-value">${teamData.original.join(', ')}</span>
-                    </div>
-                    ` : ''}
-                    ${descriptionData.original.length > 0 ? `
-                    <div class="detail-item">
-                        <span class="detail-label">Full Description:</span>
-                        <span class="detail-value">${descriptionData.original.join(', ')}</span>
-                    </div>
-                    ` : ''}
                     ${card["SP's"] && card["SP's"].toString().trim() !== '' ? `
                     <div class="detail-item">
                         <span class="detail-label">SP's:</span>
@@ -658,13 +500,13 @@ class HockeyCardWidget {
                         <span class="detail-value">${card['Odds']}</span>
                     </div>
                     ` : ''}
-                    ${this.currentGroupBy !== 'team' && teamData.original.length === 1 ? `
+                    ${this.currentGroupBy !== 'team' ? `
                     <div class="detail-item">
                         <span class="detail-label">Team:</span>
                         <span class="detail-value">${card['Team City'] || ''} ${card['Team Name'] || ''}</span>
                     </div>
                     ` : ''}
-                    ${this.currentGroupBy !== 'player' && descriptionData.original.length === 1 ? `
+                    ${this.currentGroupBy !== 'player' ? `
                     <div class="detail-item">
                         <span class="detail-label">Player:</span>
                         <span class="detail-value">${card['Description'] || ''}</span>
