@@ -526,23 +526,28 @@ class HockeyCardWidget {
         const badges = [];
         
         if (card['Rookie'] && card['Rookie'].toString().trim() !== '' && card['Rookie'].toString().trim() !== '0' && card['Rookie'].toString().toLowerCase() !== 'no') {
-            badges.push(`<span class="badge badge-rookie">${card['Rookie']}</span>`);
+            const cleanRookie = this.cleanBadgeText(card['Rookie']);
+            badges.push(`<span class="badge badge-rookie">${cleanRookie}</span>`);
         }
         
         if (card['Auto'] && card['Auto'].toString().trim() !== '' && card['Auto'].toString().trim() !== '0' && card['Auto'].toString().toLowerCase() !== 'no') {
-            badges.push(`<span class="badge badge-auto">${card['Auto']}</span>`);
+            const cleanAuto = this.cleanBadgeText(card['Auto']);
+            badges.push(`<span class="badge badge-auto">${cleanAuto}</span>`);
         }
         
         if (card['Mem'] && card['Mem'].toString().trim() !== '' && card['Mem'].toString().trim() !== '0' && card['Mem'].toString().toLowerCase() !== 'no') {
-            badges.push(`<span class="badge badge-mem">${card['Mem']}</span>`);
+            const cleanMem = this.cleanBadgeText(card['Mem']);
+            badges.push(`<span class="badge badge-mem">${cleanMem}</span>`);
         }
         
         if (card["Serial #'d"] && card["Serial #'d"].toString().trim() !== '' && card["Serial #'d"].toString().trim() !== '0') {
-            badges.push(`<span class="badge badge-serial">/${card["Serial #'d"]}</span>`);
+            const cleanSerial = this.cleanBadgeText(card["Serial #'d"]);
+            badges.push(`<span class="badge badge-serial">/${cleanSerial}</span>`);
         }
         
         if (card['Point'] && card['Point'].toString().trim() !== '' && card['Point'].toString().trim() !== '0') {
-            badges.push(`<span class="badge badge-point">${card['Point']} pts</span>`);
+            const cleanPoint = this.cleanBadgeText(card['Point']);
+            badges.push(`<span class="badge badge-point">${cleanPoint} pts</span>`);
         }
 
         const cardId = `card_${Math.random().toString(36).substr(2, 9)}`;
