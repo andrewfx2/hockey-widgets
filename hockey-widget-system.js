@@ -1,5 +1,5 @@
 // hockey-widget-system.js - Complete widget engine with smart grouping and badge deduplication
-// UPDATED: Added "All Cards" pagination functionality
+// UPDATED: Added "All Cards" pagination functionality with proper smart display logic
 class HockeyCardWidget {
     constructor(containerId, config) {
         console.log('Initializing hockey widget with container:', containerId);
@@ -104,6 +104,19 @@ class HockeyCardWidget {
         const analysis = this.analyzeCardData(card);
         
         switch (this.currentGroupBy) {
+            case 'all':
+                // For "all cards" view, use same truncation logic as other groupings
+                if (analysis.hasMultiplePlayers) {
+                    const firstTwo = analysis.players.slice(0, 2);
+                    const remaining = analysis.playerCount - 2;
+                    if (remaining > 0) {
+                        return `${firstTwo.join(', ')} + ${remaining} more`;
+                    } else {
+                        return firstTwo.join(', ');
+                    }
+                }
+                return analysis.players[0] || 'Unknown Player';
+                
             case 'team':
                 if (analysis.hasMultiplePlayers) {
                     // Show first 2 players + count of remaining
@@ -153,6 +166,37 @@ class HockeyCardWidget {
         const analysis = this.analyzeCardData(card);
         
         switch (this.currentGroupBy) {
+            case 'all':
+                // For "all cards" view, show team + set + card number with smart team handling
+                let subtitle = '';
+                
+                // Add team info with smart handling for multiple teams
+                if (analysis.hasMultipleTeams) {
+                    const firstTwo = analysis.teams.slice(0, 2);
+                    const remaining = analysis.teamCount - 2;
+                    if (remaining > 0) {
+                        subtitle = `${firstTwo.join(', ')} + ${remaining} more`;
+                    } else {
+                        subtitle = firstTwo.join(', ');
+                    }
+                } else {
+                    subtitle = analysis.teams[0] || '';
+                }
+                
+                // Add set name
+                const setName = card['Set Name'] || '';
+                if (setName) {
+                    subtitle = subtitle ? `${subtitle} • ${setName}` : setName;
+                }
+                
+                // Add card number
+                const cardNumber = card['Card'] ? `#${card['Card']}` : '';
+                if (cardNumber) {
+                    subtitle = subtitle ? `${subtitle} • ${cardNumber}` : cardNumber;
+                }
+                
+                return subtitle;
+                
             case 'team':
                 return card['Set Name'] || '';
                 
