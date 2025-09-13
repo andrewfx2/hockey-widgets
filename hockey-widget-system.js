@@ -13,7 +13,7 @@ class HockeyCardWidget {
             imageUrl: '',
             supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
             supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
-            itemsPerPage: 100,
+            itemsPerPage: 200,
             defaultGroupBy: 'all',
             ...config
         };
@@ -620,12 +620,48 @@ class HockeyCardWidget {
             return;
         }
         
+        // Apply sorting to filtered data
+        let sortedData = [...this.filteredData];
+        switch (this.currentSort) {
+            case 'name-asc':
+                sortedData.sort((a, b) => {
+                    const nameA = (a['Description'] || '').toLowerCase();
+                    const nameB = (b['Description'] || '').toLowerCase();
+                    return nameA.localeCompare(nameB);
+                });
+                break;
+            case 'name-desc':
+                sortedData.sort((a, b) => {
+                    const nameA = (a['Description'] || '').toLowerCase();
+                    const nameB = (b['Description'] || '').toLowerCase();
+                    return nameB.localeCompare(nameA);
+                });
+                break;
+            case 'team-asc':
+                sortedData.sort((a, b) => {
+                    const teamA = (a['Team Name'] || '').toLowerCase();
+                    const teamB = (b['Team Name'] || '').toLowerCase();
+                    return teamA.localeCompare(teamB);
+                });
+                break;
+            case 'set-asc':
+                sortedData.sort((a, b) => {
+                    const setA = (a['Set Name'] || '').toLowerCase();
+                    const setB = (b['Set Name'] || '').toLowerCase();
+                    return setA.localeCompare(setB);
+                });
+                break;
+            default:
+                // Keep original order (no sorting)
+                break;
+        }
+        
         // Calculate pagination
-        const totalCards = this.filteredData.length;
+        const totalCards = sortedData.length;
         const totalPages = Math.ceil(totalCards / this.ITEMS_PER_PAGE);
         const startIndex = (this.currentPage - 1) * this.ITEMS_PER_PAGE;
         const endIndex = Math.min(startIndex + this.ITEMS_PER_PAGE, totalCards);
-        const cardsToShow = this.filteredData.slice(startIndex, endIndex);
+        const cardsToShow = sortedData.slice(startIndex, endIndex);
         
         // Create simple card list (no accordion grouping)
         accordionContainer.innerHTML = `
