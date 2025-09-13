@@ -636,12 +636,16 @@ class HockeyCardWidget {
 
         const cardId = `card_${Math.random().toString(36).substr(2, 9)}`;
         
+        // Use smart display logic instead of simple fields
+        const cardTitle = this.getCardDisplayTitle(card);
+        const cardSubtitle = this.getCardDisplaySubtitle(card);
+        
         return `
             <div class="simple-card-item" onclick="window.HockeyWidgets['${this.containerId}'].toggleCardDetails('${cardId}')">
                 <div class="simple-card-main">
                     <div class="simple-card-info">
-                        <div class="simple-card-title">${card['Description'] || 'Unknown Player'}</div>
-                        <div class="simple-card-subtitle">${card['Team Name'] || ''} • ${card['Set Name'] || ''} #${card['Card'] || ''}</div>
+                        <div class="simple-card-title">${cardTitle}</div>
+                        <div class="simple-card-subtitle">${cardSubtitle}</div>
                     </div>
                     <div class="simple-card-badges">
                         ${badges.join('')}
