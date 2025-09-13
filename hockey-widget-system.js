@@ -1,4 +1,5 @@
 // hockey-widget-system.js - Complete widget engine with smart grouping and badge deduplication
+// UPDATED: Added "All Cards" pagination functionality
 class HockeyCardWidget {
     constructor(containerId, config) {
         console.log('Initializing hockey widget with container:', containerId);
@@ -75,6 +76,9 @@ class HockeyCardWidget {
         const analysis = this.analyzeCardData(card);
         
         switch (groupBy) {
+            case 'all':
+                return 'All Cards';
+                
             case 'team':
                 if (analysis.hasMultipleTeams) {
                     return `Multiple Teams (${analysis.teamCount})`;
@@ -232,6 +236,7 @@ class HockeyCardWidget {
                             <option value="team">Group by Team</option>
                             <option value="player">Group by Player</option>
                             <option value="set">Group by Set</option>
+                            <option value="all">All Cards</option>
                         </select>
                     </div>
 
@@ -560,9 +565,153 @@ class HockeyCardWidget {
         if (groupBySelect) {
             this.currentGroupBy = groupBySelect.value;
             this.expandedGroups.clear();
+            this.currentPage = 1; // Reset to first page when changing grouping
             this.groupData();
             this.displayPage();
         }
+    }
+
+    // NEW: Display all cards with pagination (for "all" grouping option)
+    displayAllCardsPaginated() {
+        const accordionContainer = document.getElementById(`accordionContainer-${this.containerId}`);
+        const paginationContainer = document.getElementById(`paginationContainer-${this.containerId}`);
+        
+        if (this.filteredData.length === 0) {
+            accordionContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #cccccc;">No cards found matching your filters.</div>';
+            paginationContainer.style.display = 'none';
+            return;
+        }
+        
+        // Calculate pagination
+        const totalCards = this.filteredData.length;
+        const totalPages = Math.ceil(totalCards / this.ITEMS_PER_PAGE);
+        const startIndex = (this.currentPage - 1) * this.ITEMS_PER_PAGE;
+        const endIndex = Math.min(startIndex + this.ITEMS_PER_PAGE, totalCards);
+        const cardsToShow = this.filteredData.slice(startIndex, endIndex);
+        
+        // Create simple card list (no accordion grouping)
+        accordionContainer.innerHTML = `
+            <div class="all-cards-container">
+                <div class="all-cards-header">
+                    <h3>All Cards - Page ${this.currentPage} of ${totalPages}</h3>
+                    <span class="cards-count">${totalCards} total cards</span>
+                </div>
+                <div class="all-cards-list">
+                    ${cardsToShow.map(card => this.createSimpleCardListItem(card)).join('')}
+                </div>
+            </div>
+        `;
+        
+        // Enable and update pagination
+        this.updatePaginationForAll(totalCards, totalPages);
+    }
+
+    // NEW: Create simple card list item for "all cards" view
+    createSimpleCardListItem(card) {
+        const badges = [];
+        
+        // Existing badge logic
+        if (card['Rookie'] && card['Rookie'].toString().trim() !== '' && card['Rookie'].toString().trim() !== '0' && card['Rookie'].toString().toLowerCase() !== 'no') {
+            const rookieBadge = this.deduplicateBadge(card['Rookie']);
+            if (rookieBadge) badges.push(`<span class="badge badge-rookie">${rookieBadge}</span>`);
+        }
+        
+        if (card['Auto'] && card['Auto'].toString().trim() !== '' && card['Auto'].toString().trim() !== '0' && card['Auto'].toString().toLowerCase() !== 'no') {
+            const autoBadge = this.deduplicateBadge(card['Auto']);
+            if (autoBadge) badges.push(`<span class="badge badge-auto">${autoBadge}</span>`);
+        }
+        
+        if (card['Mem'] && card['Mem'].toString().trim() !== '' && card['Mem'].toString().trim() !== '0' && card['Mem'].toString().toLowerCase() !== 'no') {
+            const memBadge = this.deduplicateBadge(card['Mem']);
+            if (memBadge) badges.push(`<span class="badge badge-mem">${memBadge}</span>`);
+        }
+        
+        if (card["Serial #'d"] && card["Serial #'d"].toString().trim() !== '' && card["Serial #'d"].toString().trim() !== '0') {
+            badges.push(`<span class="badge badge-serial">/${card["Serial #'d"]}</span>`);
+        }
+        
+        if (card['Point'] && card['Point'].toString().trim() !== '' && card['Point'].toString().trim() !== '0') {
+            badges.push(`<span class="badge badge-point">${card['Point']} pts</span>`);
+        }
+
+        const cardId = `card_${Math.random().toString(36).substr(2, 9)}`;
+        
+        return `
+            <div class="simple-card-item" onclick="window.HockeyWidgets['${this.containerId}'].toggleCardDetails('${cardId}')">
+                <div class="simple-card-main">
+                    <div class="simple-card-info">
+                        <div class="simple-card-title">${card['Description'] || 'Unknown Player'}</div>
+                        <div class="simple-card-subtitle">${card['Team Name'] || ''} • ${card['Set Name'] || ''} #${card['Card'] || ''}</div>
+                    </div>
+                    <div class="simple-card-badges">
+                        ${badges.join('')}
+                    </div>
+                </div>
+            </div>
+            <div class="card-list-details" id="${cardId}">
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <span class="detail-label">Set:</span>
+                        <span class="detail-value">${card['Set Name'] || ''}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Card #:</span>
+                        <span class="detail-value">${card['Card'] || ''}</span>
+                    </div>
+                    ${card["SP's"] && card["SP's"].toString().trim() !== '' ? `
+                    <div class="detail-item">
+                        <span class="detail-label">SP's:</span>
+                        <span class="detail-value">${card["SP's"]}</span>
+                    </div>
+                    ` : ''}
+                    ${card['Odds'] && card['Odds'].toString().trim() !== '' ? `
+                    <div class="detail-item">
+                        <span class="detail-label">Odds:</span>
+                        <span class="detail-value">${card['Odds']}</span>
+                    </div>
+                    ` : ''}
+                    <div class="detail-item">
+                        <span class="detail-label">Team:</span>
+                        <span class="detail-value">${card['Team Name'] || ''}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Player:</span>
+                        <span class="detail-value">${card['Description'] || ''}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // NEW: Update pagination for "all cards" view
+    updatePaginationForAll(totalCards, totalPages) {
+        const paginationContainer = document.getElementById(`paginationContainer-${this.containerId}`);
+        const paginationInfo = document.getElementById(`paginationInfo-${this.containerId}`);
+        const prevBtn = document.getElementById(`prevBtn-${this.containerId}`);
+        const nextBtn = document.getElementById(`nextBtn-${this.containerId}`);
+        const pageSelect = document.getElementById(`pageSelect-${this.containerId}`);
+        
+        if (paginationInfo) {
+            const startItem = (this.currentPage - 1) * this.ITEMS_PER_PAGE + 1;
+            const endItem = Math.min(this.currentPage * this.ITEMS_PER_PAGE, totalCards);
+            paginationInfo.textContent = `Showing ${startItem}-${endItem} of ${totalCards} cards`;
+        }
+        
+        if (prevBtn) prevBtn.disabled = this.currentPage <= 1;
+        if (nextBtn) nextBtn.disabled = this.currentPage >= totalPages;
+        
+        if (pageSelect) {
+            pageSelect.innerHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `Page ${i}`;
+                if (i === this.currentPage) option.selected = true;
+                pageSelect.appendChild(option);
+            }
+        }
+        
+        paginationContainer.style.display = totalPages > 1 ? 'flex' : 'none';
     }
 
     // Create accordion group
@@ -759,7 +908,7 @@ class HockeyCardWidget {
         document.querySelectorAll(`#${this.containerId} .card-list-details`).forEach(detail => {
             detail.classList.remove('open');
         });
-        document.querySelectorAll(`#${this.containerId} .card-list-item`).forEach(item => {
+        document.querySelectorAll(`#${this.containerId} .card-list-item, #${this.containerId} .simple-card-item`).forEach(item => {
             item.classList.remove('expanded');
         });
         
@@ -770,10 +919,16 @@ class HockeyCardWidget {
         }
     }
 
-    // Display current page with batch DOM operations
+    // UPDATED: Display current page with "all cards" handling
     displayPage() {
         const accordionContainer = document.getElementById(`accordionContainer-${this.containerId}`);
         if (!accordionContainer) return;
+        
+        // Special handling for "all cards" - use pagination instead of accordion
+        if (this.currentGroupBy === 'all') {
+            this.displayAllCardsPaginated();
+            return;
+        }
         
         const groupNames = Object.keys(this.groupedData);
         
@@ -805,28 +960,52 @@ class HockeyCardWidget {
         this.updatePagination();
     }
 
+    // UPDATED: Update pagination with "all cards" handling
     updatePagination() {
+        // Hide pagination for accordion views (team, player, set groupings)
+        const paginationContainer = document.getElementById(`paginationContainer-${this.containerId}`);
+        if (paginationContainer && this.currentGroupBy !== 'all') {
+            paginationContainer.style.display = 'none';
+        }
+        
+        // Show pagination info for grouped views
         const totalItems = this.filteredData.length;
         const totalGroups = Object.keys(this.groupedData).length;
         
         const paginationInfo = document.getElementById(`paginationInfo-${this.containerId}`);
-        const paginationContainer = document.getElementById(`paginationContainer-${this.containerId}`);
-        
-        if (paginationInfo) {
+        if (paginationInfo && this.currentGroupBy !== 'all') {
             paginationInfo.textContent = `Showing ${totalGroups} groups (${totalItems} cards total)`;
         }
-        
-        if (paginationContainer) {
-            paginationContainer.style.display = 'none';
-        }
     }
 
+    // UPDATED: Change page for "all cards" pagination
     changePage(direction) {
-        // Not used in accordion view
+        if (this.currentGroupBy !== 'all') return; // Only works for "all cards" view
+        
+        const totalCards = this.filteredData.length;
+        const totalPages = Math.ceil(totalCards / this.ITEMS_PER_PAGE);
+        
+        if (direction > 0 && this.currentPage < totalPages) {
+            this.currentPage++;
+        } else if (direction < 0 && this.currentPage > 1) {
+            this.currentPage--;
+        }
+        
+        this.displayPage();
     }
 
+    // UPDATED: Go to specific page for "all cards" pagination
     goToPage(pageNumber) {
-        // Not used in accordion view
+        if (this.currentGroupBy !== 'all') return; // Only works for "all cards" view
+        
+        const totalCards = this.filteredData.length;
+        const totalPages = Math.ceil(totalCards / this.ITEMS_PER_PAGE);
+        const page = parseInt(pageNumber);
+        
+        if (page >= 1 && page <= totalPages) {
+            this.currentPage = page;
+            this.displayPage();
+        }
     }
 
     // Show error message
