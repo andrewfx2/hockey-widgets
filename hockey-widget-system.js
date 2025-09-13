@@ -1,5 +1,5 @@
 // hockey-widget-system.js - Complete widget engine with smart grouping and badge deduplication
-// UPDATED: Added "All Cards" pagination functionality with proper smart display logic
+// UPDATED: Added "All Cards" pagination functionality with A-Z sort options
 class HockeyCardWidget {
     constructor(containerId, config) {
         console.log('Initializing hockey widget with container:', containerId);
@@ -25,6 +25,7 @@ class HockeyCardWidget {
         this.filteredData = [];
         this.groupedData = {};
         this.currentGroupBy = this.config.defaultGroupBy;
+        this.currentSort = 'default';
         this.expandedGroups = new Set();
         this.isMobile = window.innerWidth <= 767;
         
@@ -275,6 +276,13 @@ class HockeyCardWidget {
                             <option value="player">Group by Player</option>
                             <option value="set">Group by Set</option>
                             <option value="all" selected>All Cards</option>
+                        </select>
+                        <select id="sortSelect-${this.containerId}" class="group-by-select" onchange="window.HockeyWidgets['${this.containerId}'].changeSortOrder()">
+                            <option value="default">Default Order</option>
+                            <option value="name-asc">A-Z by Player</option>
+                            <option value="name-desc">Z-A by Player</option>
+                            <option value="team-asc">A-Z by Team</option>
+                            <option value="set-asc">A-Z by Set</option>
                         </select>
                     </div>
 
@@ -600,12 +608,35 @@ class HockeyCardWidget {
     // Change grouping
     changeGroupBy() {
         const groupBySelect = document.getElementById(`groupBySelect-${this.containerId}`);
+        const sortSelect = document.getElementById(`sortSelect-${this.containerId}`);
+        
         if (groupBySelect) {
             this.currentGroupBy = groupBySelect.value;
             this.expandedGroups.clear();
             this.currentPage = 1; // Reset to first page when changing grouping
+            
+            // Show sort dropdown only for "all cards" view
+            if (sortSelect) {
+                if (this.currentGroupBy === 'all') {
+                    sortSelect.style.display = 'block';
+                } else {
+                    sortSelect.style.display = 'none';
+                    this.currentSort = 'default'; // Reset sort when leaving "all cards"
+                }
+            }
+            
             this.groupData();
             this.displayPage();
+        }
+    }
+
+    // NEW: Change sort order for "all cards" view
+    changeSortOrder() {
+        const sortSelect = document.getElementById(`sortSelect-${this.containerId}`);
+        if (sortSelect && this.currentGroupBy === 'all') {
+            this.currentSort = sortSelect.value;
+            this.currentPage = 1; // Reset to first page when changing sort
+            this.displayPage(); // Re-display with new sort
         }
     }
 
@@ -1123,6 +1154,12 @@ class HockeyCardWidget {
                 
                 if (loading) loading.style.display = 'none';
                 if (accordionContainer) accordionContainer.style.display = 'flex';
+                
+                // Initialize sort dropdown visibility
+                const sortSelect = document.getElementById(`sortSelect-${this.containerId}`);
+                if (sortSelect) {
+                    sortSelect.style.display = this.currentGroupBy === 'all' ? 'block' : 'none';
+                }
             });
 
         } catch (err) {
