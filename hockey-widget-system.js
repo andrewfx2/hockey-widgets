@@ -13,7 +13,7 @@ class HockeyCardWidget {
             imageUrl: '',
             supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
             supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
-            itemsPerPage: 100,
+            itemsPerPage: 200,
             defaultGroupBy: 'all',
             ...config
         };
@@ -280,7 +280,7 @@ class HockeyCardWidget {
                             <option value="team">Group by Team</option>
                             <option value="player">Group by Player</option>
                             <option value="set">Group by Set</option>
-                            <option value="all">All Cards</option>
+                            <option value="all" selected>All Cards</option>
                         </select>
                     </div>
 
