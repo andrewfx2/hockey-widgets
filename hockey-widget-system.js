@@ -167,7 +167,7 @@ class HockeyCardWidget {
         
         switch (this.currentGroupBy) {
             case 'all':
-                // For "all cards" view, show team + set + card number with smart team handling
+                // For "all cards" view, show team + set (no card number)
                 let subtitle = '';
                 
                 // Add team info with smart handling for multiple teams
@@ -187,12 +187,6 @@ class HockeyCardWidget {
                 const setName = card['Set Name'] || '';
                 if (setName) {
                     subtitle = subtitle ? `${subtitle} • ${setName}` : setName;
-                }
-                
-                // Add card number
-                const cardNumber = card['Card'] ? `#${card['Card']}` : '';
-                if (cardNumber) {
-                    subtitle = subtitle ? `${subtitle} • ${cardNumber}` : cardNumber;
                 }
                 
                 return subtitle;
