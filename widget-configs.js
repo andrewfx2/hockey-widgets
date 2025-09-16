@@ -78,7 +78,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Series 2 2023-2024',
         title: 'Series 2 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/a2bac8a8-7b72-4b24-87d3-3428bce65dfd/output-onlinepngtools+%282%29.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
@@ -87,7 +87,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Series 2 2024-2025',
         title: 'Series 2 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/a2bac8a8-7b72-4b24-87d3-3428bce65dfd/output-onlinepngtools+%282%29.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
@@ -98,7 +98,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'O-Pee-Chee Hockey 2020-2021',
         title: 'O-Pee-Chee Hockey 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/a2bac8a8-7b72-4b24-87d3-3428bce65dfd/output-onlinepngtools+%282%29.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
@@ -107,7 +107,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'O-Pee-Chee Hockey 2021-2022',
         title: 'O-Pee-Chee Hockey 2021-2022',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/a2bac8a8-7b72-4b24-87d3-3428bce65dfd/output-onlinepngtools+%282%29.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
@@ -116,7 +116,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'O-Pee-Chee Hockey 2022-2023',
         title: 'O-Pee-Chee Hockey 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/a2bac8a8-7b72-4b24-87d3-3428bce65dfd/output-onlinepngtools+%282%29.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
@@ -125,7 +125,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'O-Pee-Chee Hockey 2023-2024',
         title: 'O-Pee-Chee Hockey 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/a2bac8a8-7b72-4b24-87d3-3428bce65dfd/output-onlinepngtools+%282%29.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
@@ -134,7 +134,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'O-Pee-Chee Hockey 2024-2025',
         title: 'O-Pee-Chee Hockey 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/a2bac8a8-7b72-4b24-87d3-3428bce65dfd/output-onlinepngtools+%282%29.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
@@ -183,7 +183,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Trilogy 2020-2021',
         title: 'Trilogy 2020-2021',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/a2bac8a8-7b72-4b24-87d3-3428bce65dfd/output-onlinepngtools+%282%29.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
@@ -192,7 +192,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Trilogy 2022-2023',
         title: 'Trilogy 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/a2bac8a8-7b72-4b24-87d3-3428bce65dfd/output-onlinepngtools+%282%29.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
@@ -201,7 +201,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Trilogy 2023-2024',
         title: 'Trilogy 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/a2bac8a8-7b72-4b24-87d3-3428bce65dfd/output-onlinepngtools+%282%29.png?content-type=image%2Fpng',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
