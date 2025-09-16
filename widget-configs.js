@@ -212,7 +212,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Parkhurst 2022-2023',
         title: 'Parkhurst 2022-2023',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/1b7a049e-d0a9-4769-b041-3229a92a42b5/park+2022-2023.jpeg?content-type=image%2Fjpeg',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
@@ -221,7 +221,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Parkhurst 2023-2024',
         title: 'Parkhurst 2023-2024',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/8a6916a9-ab71-4d4c-a930-57795e347fb6/parkhurst+2023-2024.jpeg?content-type=image%2Fjpeg',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
@@ -230,7 +230,7 @@ const HOCKEY_WIDGET_CONFIGS = {
         tableName: 'Parkhurst 2024-2025',
         title: 'Parkhurst 2024-2025',
         description: 'Checklists are grouped by player, set or team. Use filters (Mem, Auto, Rookie, Set Type, Team) for advanced drilldowns.',
-        imageUrl: '',
+        imageUrl: 'https://images.squarespace-cdn.com/content/689a9743bddc666e1a33808c/7fad5301-1d5e-4d9b-9493-686826ba1cb6/parkhurst+2024-2025.jpeg?content-type=image%2Fjpeg',
         supabaseUrl: 'https://lwuwdvnyclgaogkqemxt.supabase.co',
         supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dXdkdm55Y2xnYW9na3FlbXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MjY3MDQsImV4cCI6MjA3MTQwMjcwNH0.n4aCBlmHiI0g51xwUQMVB6h4YmAKesZ1ZFL2ZX3755U',
         defaultgroupby: 'all'
